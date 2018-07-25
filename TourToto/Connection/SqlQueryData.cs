@@ -8,25 +8,17 @@ using System.Threading.Tasks;
 
 namespace TourToto.Connection
 {
-    public class SqlQueryData
+    public class SqlQueryData : ISqlQueryData
     {
-        private CommandType? commandType = null;
-        public CommandType CommandType
-        {
-            get
-            {
-                return (CommandType)commandType;
-            }
-            set
-            {
-                commandType = value;
-            }
-        }
+        private CommandType? commandType = CommandType.Text;
+
         private bool hasParameters = false;
+
         public bool HasParameters
         {
             get => hasParameters;
         }
+
         public bool IsUsable
         {
             get
@@ -34,17 +26,19 @@ namespace TourToto.Connection
                 return isUsable();
             }
         }
+
         private int nrOfParameters = 0;
+
         public int NrOfParameters
         {
             get => nrOfParameters;
         }
+
         public QueryType? QueryType { get; set; } = null;
         public List<string> SqlParameter { get; set; } = new List<string>();
         public List<SqlDbType> SqlParameterType { get; set; } = new List<SqlDbType>();
         public List<string> SqlParameterValue { get; set; } = new List<string>();
         public string SqlQuery { get; set; } = String.Empty;
-
 
         private bool isUsable()
         {
@@ -53,12 +47,11 @@ namespace TourToto.Connection
                 SqlParameter.Count == SqlParameterValue.Count) && AllParametersProvided());
         }
 
-        public bool addQueryData(string sql_query, CommandType command_type, QueryType query_type,
+        public bool AddQueryData(string sql_query, CommandType command_type, QueryType query_type,
             List<string> sql_parameter = null, List<SqlDbType> sql_parameter_type = null,
             List<string> sql_parameter_value = null)
         {
             SqlQuery = sql_query;
-            CommandType = command_type;
             QueryType = query_type;
             if (sql_parameter != null && sql_parameter_type != null && sql_parameter_value != null)
             {
@@ -76,8 +69,8 @@ namespace TourToto.Connection
             else
                 return false;
         }
-        =
-        public void addParameter(string sql_parameter, SqlDbType sql_parameter_type,
+
+        public void AddParameter(string sql_parameter, SqlDbType sql_parameter_type,
             string sql_parameter_value)
         {
             if (sql_parameter != String.Empty && sql_parameter_value != String.Empty)
@@ -107,7 +100,6 @@ namespace TourToto.Connection
                 return true;
             else
                 return false;
-
         }
 
         public string GetNextParameter()
@@ -123,7 +115,6 @@ namespace TourToto.Connection
             SqlParameter.RemoveAt(0);
             return output;
         }
-
 
         public string GetNextParameterValue()
         {

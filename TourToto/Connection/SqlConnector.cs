@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data;
-
-using MySql.Data;
-using MySql.Data.MySqlClient;
-using System.Data.SqlClient;
+﻿using System.Data.SqlClient;
 
 namespace TourToto.Connection
 {
-    class SqlConnector
+    internal class SqlConnector
     {
         private static SqlConnector instance = null;
         private static SqlConnection conn = null;
@@ -23,7 +14,7 @@ namespace TourToto.Connection
                 if (conn == null)
                 {
                     instance = new SqlConnector();
-                    string connStr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Dirk\Dropbox\Amerika\Amerika\project\TourToto\Database.mdf;Integrated Security=True;Connect Timeout=30";
+                    string connStr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\RDemmers\Dropbox\Amerika\Tourtoto\project\TourToto\Database.mdf;Integrated Security=True;Connect Timeout=30";
                     conn = new SqlConnection(connStr);
                     return conn;
                 }
@@ -31,15 +22,11 @@ namespace TourToto.Connection
                 {
                     return conn;
                 }
-
             }
         }
 
-        private SqlConnector() { }
-
-
-
-        
-
+        private SqlConnector()
+        {
+        }
     }
 }
