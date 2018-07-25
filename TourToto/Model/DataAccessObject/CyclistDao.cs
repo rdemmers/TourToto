@@ -23,7 +23,6 @@ namespace TourToto.Model
                 "(name) " +
                 "VALUES (@name); " +
                 "SELECT SCOPE_IDENTITY();",
-                CommandType = CommandType.Text,
                 QueryType = QueryType.non_query
             };
             queryData.AddParameter("@name", SqlDbType.VarChar, cyclist.Name);
@@ -48,7 +47,6 @@ namespace TourToto.Model
                 SqlQuery = "UPDATE cyclists " +
                 "SET name = @name " +
                 "WHERE id = @cyclistId; ",
-                CommandType = CommandType.Text,
                 QueryType = QueryType.non_query
             };
             queryData.AddParameter("@name", SqlDbType.VarChar, cyclist.Name);
@@ -64,7 +62,6 @@ namespace TourToto.Model
             {
                 SqlQuery = "DELETE FROM cyclists " +
                 "WHERE id = @cyclistId; ",
-                CommandType = CommandType.Text,
                 QueryType = QueryType.non_query
             };
 
@@ -78,7 +75,6 @@ namespace TourToto.Model
             SqlQueryData queryData = new SqlQueryData()
             {
                 SqlQuery = "SELECT * FROM cyclists WHERE [id] = @id",
-                CommandType = CommandType.Text,
                 QueryType = QueryType.reader
             };
             queryData.AddParameter("@id", SqlDbType.VarChar, Convert.ToString(id));

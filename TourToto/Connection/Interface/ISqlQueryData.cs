@@ -6,6 +6,7 @@ namespace TourToto.Connection
     public interface ISqlQueryData
     {
         bool HasParameters { get; }
+        CommandType CommandType { get; }
         bool IsUsable { get; }
         int NrOfParameters { get; }
         QueryType? QueryType { get; set; }

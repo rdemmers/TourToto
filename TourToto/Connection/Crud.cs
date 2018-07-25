@@ -4,7 +4,7 @@ namespace TourToto.Connection
 {
     internal class Crud : ICrud
     {
-        private static RunQuery query;
+        private static IRunQuery query;
         private static ICrud crud = null;
 
         public static ICrud Instance

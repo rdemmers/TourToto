@@ -2,7 +2,7 @@
 
 namespace TourToto.Model
 {
-    public class User : Datastructure
+    public class User
     {
         private int id;
         private int credentials;
@@ -20,7 +20,9 @@ namespace TourToto.Model
         public int TotalScore { get => totalScore; set => totalScore = value; }
         public int DayScore { get => dayScore; set => dayScore = value; }
 
-        public User() { }
+        public User()
+        {
+        }
 
         public User(int id, int credentials, string name, string email, string password, int totalScore, int dayScore)
         {
