@@ -1,39 +1,41 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TourToto.Model
 {
-    public class User
+    public class User : Datastructure
     {
-        public int id { get; set; }
-        public int credentials { get; set; }
-        public String name { get; set; }
-        public String email { get; set; }
-        public String password { get; set; }
-        public int userTeamId { get; set; }
-        public int totalScore { get; set; }
-        public int dayScore { get; set; }
+        private int id;
+        private int credentials;
+        private String name;
+        private String email;
+        private String password;
+        private int totalScore;
+        private int dayScore;
+
+        public int Id { get => id; set => id = value; }
+        public int Credentials { get => credentials; set => credentials = value; }
+        public string Name { get => name; set => name = value; }
+        public string Email { get => email; set => email = value; }
+        public string Password { get => password; set => password = value; }
+        public int TotalScore { get => totalScore; set => totalScore = value; }
+        public int DayScore { get => dayScore; set => dayScore = value; }
 
         public User() { }
 
-        public User(int id, int credentials, string name, string email, string password, int userTeamId, int totalScore, int dayScore)
+        public User(int id, int credentials, string name, string email, string password, int totalScore, int dayScore)
         {
-            this.id = id;
-            this.credentials = credentials;
-            this.name = name;
-            this.email = email;
-            this.password = password;
-            this.userTeamId = userTeamId;
-            this.totalScore = totalScore;
-            this.dayScore = dayScore;
+            this.Id = id;
+            this.Credentials = credentials;
+            this.Name = name;
+            this.Email = email;
+            this.Password = password;
+            this.TotalScore = totalScore;
+            this.DayScore = dayScore;
         }
 
         public override string ToString()
         {
-            return "User id: " + id + "credentials: " + credentials + "name: " + name;
+            return "User id: " + Id + "credentials: " + Credentials + "name: " + Name;
         }
     }
 }

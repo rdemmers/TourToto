@@ -6,10 +6,24 @@ using System.Threading.Tasks;
 
 namespace TourToto.Model
 {
-    class Cyclist
+    public class Cyclist
     {
         private int id;
         private String name;
-        private CyclistTeam team;
+        private int cyclistTeamId;
+
+        public Cyclist()
+        {
+        }
+
+        public Cyclist(int id, string name)
+        {
+            this.Id = id;
+            this.Name = name;
+        }
+
+        public int Id { get => id; set => id = value; }
+        public string Name { get => name; set => name = value; }
+        public int CyclistTeamId { get => cyclistTeamId; set => cyclistTeamId = value; }
     }
 }
