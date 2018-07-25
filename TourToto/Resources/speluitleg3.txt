@@ -1,0 +1,1 @@
+﻿Op ??-??-?? worden de wielrenners bekend en kun je deze invoeren bij 'wielrenners'. Wanneer je alles ingevoerd hebt, kun je klikken op 'team ready' waarmee je de 'samenstel-fase' van de tourtoto activeert. De deelenemers krijgen dan via e-mail te horen dat ze kunnen beginnen met het samenstellen van hun team.

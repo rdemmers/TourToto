@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TourToto", "TourToto\TourToto.csproj", "{A0958597-7A30-4452-990B-7AA01E6EBB00}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TourTotoTests", "TourTotoTests\TourTotoTests.csproj", "{5285540A-D9CC-4AE2-B699-73740DA517F8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A0958597-7A30-4452-990B-7AA01E6EBB00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0958597-7A30-4452-990B-7AA01E6EBB00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0958597-7A30-4452-990B-7AA01E6EBB00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0958597-7A30-4452-990B-7AA01E6EBB00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5285540A-D9CC-4AE2-B699-73740DA517F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5285540A-D9CC-4AE2-B699-73740DA517F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5285540A-D9CC-4AE2-B699-73740DA517F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5285540A-D9CC-4AE2-B699-73740DA517F8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {99B2A356-A15D-4D73-B633-4455F44EC286}
+	EndGlobalSection
+EndGlobal

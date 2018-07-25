@@ -1,0 +1,23 @@
+﻿INSERT INTO [dbo].[etappe] ([number],[type],[date],[begin_point],[end_point],[length],[tour_id])
+VALUES
+(1,'vlak','2018-07-07','Noirmoutier-en-I''lle','Fontenay-le-Comte',201.0,1),
+(2,'vlak','2018-07-08','Mouilleron-Saint-Germain','La-Roche-sur-Yon',182.5,1),
+(3,'ploegentijdrit','2018-07-09','Cholet','Cholet',35.5,1),
+(4,'vlak','2018-07-10','La Baule','Sarzeau',195.0,1),
+(5,'heuvels','2018-07-11','Lorient','Quimper',204.5,1),
+(6,'heuvels','2018-07-12','Brest','Mûr de Bretagne',181.0,1),
+(7,'vlak','2018-07-13','Fougères','Chartres',231.0,1),
+(8,'vlak','2018-07-14','Dreux','Amiens',181.0,1),
+(9,'kasseien','2018-07-15','Arras','Roubaix',156.5,1),
+(10,'bergen','2018-07-17','Annecy','Le Grand-Bornand',158.5,1),
+(11,'bergen','2018-07-18','Albertville','La Rosière',108.5,1),
+(12,'bergen','2018-07-19','Bourg-Saint-Maurice','Aple d''Huez',175.5,1),
+(13,'vlak','2018-07-20','Bourg d''Oisans','Valence',169.5,1),
+(14,'heuvels, vlakke aanloop','2018-07-21','Saint-Paul-Trois-Châteaux','Mende',188.0,1),
+(15,'heuvels','2018-07-22','Milau','Carcassonne',181.5,1),
+(16,'bergen, vlakke aanloop','2018-07-24','Carcassonne','Bagnères-de-Luchon',218.0,1),
+(17,'bergen','2018-07-25','Bagnères-de-Luchon','Col du Portet',65.0,1),
+(18,'vlak','2018-07-26','Trie-sur-Baïse','Pau',171.0,1),
+(19,'bergen','2018-07-27','Lourdes','Laruns',200.5,1),
+(20,'tijdrit, heuvels','2018-07-28','Saint-Pée-sur-Nivelle','Espelette',31.0,1),
+(21,'vlak','2018-07-29','Houilles','Champs-Élysées (Parijs)',116.0,1);
