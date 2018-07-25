@@ -4,11 +4,11 @@ using System.Data.SqlClient;
 using System.Windows;
 using TourToto.Connection;
 
-namespace TourToto.Model
+namespace TourToto.Model.DataAccessObject
 {
     public class CyclistDao : ICyclistDao
     {
-        private ICrud crud;
+        private readonly ICrud crud;
 
         public CyclistDao()
         {
@@ -17,7 +17,7 @@ namespace TourToto.Model
 
         public int Add(Cyclist cyclist)
         {
-            SqlQueryData queryData = new SqlQueryData("INSERT INTO cyclists (name) VALUES (@name); SELECT SCOPE_IDENTITY();");
+            var queryData = new SqlQueryData("INSERT INTO cyclists (name) VALUES (@name); SELECT SCOPE_IDENTITY();");
 
             queryData.AddParameter("@name", SqlDbType.VarChar, cyclist.Name);
 
@@ -36,7 +36,7 @@ namespace TourToto.Model
 
         public bool Update(Cyclist cyclist)
         {
-            SqlQueryData queryData = new SqlQueryData("UPDATE cyclists SET name = @name WHERE id = @cyclistId; ");
+            var queryData = new SqlQueryData("UPDATE cyclists SET name = @name WHERE id = @cyclistId; ");
 
             queryData.AddParameter("@name", SqlDbType.VarChar, cyclist.Name);
             queryData.AddParameter("@cyclistId", SqlDbType.Int, cyclist.Id.ToString());
@@ -46,7 +46,7 @@ namespace TourToto.Model
 
         public bool Delete(int cyclistId)
         {
-            SqlQueryData queryData = new SqlQueryData("DELETE FROM cyclists WHERE id = @cyclistId; ");
+            var queryData = new SqlQueryData("DELETE FROM cyclists WHERE id = @cyclistId; ");
 
             queryData.AddParameter("@cyclistId", SqlDbType.Int, cyclistId.ToString());
 
@@ -55,7 +55,7 @@ namespace TourToto.Model
 
         public Cyclist Get(int id)
         {
-            SqlQueryData queryData = new SqlQueryData("SELECT * FROM cyclists WHERE [id] = @id", QueryType.Reader);
+            var queryData = new SqlQueryData("SELECT * FROM cyclists WHERE [id] = @id", QueryType.Reader);
 
             queryData.AddParameter("@id", SqlDbType.VarChar, Convert.ToString(id));
 
@@ -65,7 +65,7 @@ namespace TourToto.Model
 
                 while (reader.Read())
                 {
-                    Cyclist cyclist = new Cyclist(reader.GetInt32(0), reader.GetString(1));
+                    var cyclist = new Cyclist(reader.GetInt32(0), reader.GetString(1));
 
                     return cyclist;
                 }

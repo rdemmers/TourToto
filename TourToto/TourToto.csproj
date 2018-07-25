@@ -242,7 +242,6 @@
     <Compile Include="Model\Interface\ICyclistDao.cs" />
     <Compile Include="Model\Interface\ICyclistTeamDao.cs" />
     <Compile Include="Model\Interface\IUserDao.cs" />
-    <Compile Include="Model\DataAccessObject\UserTeamDao.cs" />
     <Compile Include="Model\Day.cs" />
     <Compile Include="Model\Tour.cs" />
     <Compile Include="Model\User.cs" />

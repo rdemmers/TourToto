@@ -5,11 +5,11 @@ using System.Windows;
 using TourToto.Builder;
 using TourToto.Connection;
 
-namespace TourToto.Model
+namespace TourToto.Model.DataAccessObject
 {
     public class CyclistTeamDao : ICyclistTeamDao
     {
-        private ICrud crud;
+        private readonly ICrud crud;
 
         public CyclistTeamDao()
         {
@@ -18,12 +18,12 @@ namespace TourToto.Model
 
         public int Add(CyclistTeam team)
         {
-            String query = "INSERT INTO cyclist_team " +
+            const string query = "INSERT INTO cyclist_team " +
                 "(name, country) " +
                 "VALUES (@name, @country); " +
                 "SELECT SCOPE_IDENTITY();";
 
-            SqlQueryData queryData = new SqlQueryData(query);
+            var queryData = new SqlQueryData(query);
 
             queryData.AddParameter("@name", SqlDbType.VarChar, team.Name);
             queryData.AddParameter("@country", SqlDbType.VarChar, team.Country);
@@ -43,10 +43,10 @@ namespace TourToto.Model
 
         public bool Update(CyclistTeam team)
         {
-            String query = "UPDATE cyclist_team " +
+            const string query = "UPDATE cyclist_team " +
                 "SET name = @name, country = @country " +
                 "WHERE id = @cyclistId; ";
-            SqlQueryData queryData = new SqlQueryData(query);
+            var queryData = new SqlQueryData(query);
 
             queryData.AddParameter("@name", SqlDbType.VarChar, team.Name);
             queryData.AddParameter("@country", SqlDbType.VarChar, team.Country);
@@ -57,7 +57,7 @@ namespace TourToto.Model
 
         public bool Delete(int cyclistId)
         {
-            SqlQueryData queryData = new SqlQueryData("DELETE FROM cyclist_team WHERE id = @cyclistId; ");
+            var queryData = new SqlQueryData("DELETE FROM cyclist_team WHERE id = @cyclistId; ");
 
             queryData.AddParameter("@cyclistId", SqlDbType.Int, cyclistId.ToString());
 
@@ -66,11 +66,11 @@ namespace TourToto.Model
 
         public CyclistTeam Get(int id)
         {
-            SqlQueryData queryData = new SqlQueryData("SELECT * FROM cyclist_team WHERE [id] = @id", QueryType.Reader);
+            var queryData = new SqlQueryData("SELECT * FROM cyclist_team WHERE [id] = @id", QueryType.Reader);
 
             queryData.AddParameter("@id", SqlDbType.VarChar, Convert.ToString(id));
 
-            CyclistTeamBuilder builder = new CyclistTeamBuilder();
+            var builder = new CyclistTeamBuilder();
 
             try
             {

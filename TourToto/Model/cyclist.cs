@@ -8,9 +8,9 @@ namespace TourToto.Model
 {
     public class Cyclist
     {
-        private int id;
-        private String name;
-        private int cyclistTeamId;
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public int CyclistTeamId { get; set; }
 
         public Cyclist()
         {
@@ -21,9 +21,5 @@ namespace TourToto.Model
             this.Id = id;
             this.Name = name;
         }
-
-        public int Id { get => id; set => id = value; }
-        public string Name { get => name; set => name = value; }
-        public int CyclistTeamId { get => cyclistTeamId; set => cyclistTeamId = value; }
     }
 }

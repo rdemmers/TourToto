@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TourToto.Model
 {
-    class Day
+    public class Day
     {
         private int dayId;
         private String startingPoint;
@@ -16,7 +16,9 @@ namespace TourToto.Model
         private String description;
         private int placementId;
 
-        public Day() { }
+        public Day()
+        {
+        }
 
         public Day(int dayId, string startingPoint, string endPoint, DateTime date, double length, string description, int placementId)
         {

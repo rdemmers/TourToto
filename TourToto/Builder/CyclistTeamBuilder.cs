@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
+using TourToto.Builder.Interface;
 using TourToto.Model;
+using TourToto.Model.DataAccessObject;
 
 namespace TourToto.Builder
 {
-    class CyclistTeamBuilder : ICyclistTeamBuilder
+    internal class CyclistTeamBuilder : ICyclistTeamBuilder
     {
         private int id;
         private String name;

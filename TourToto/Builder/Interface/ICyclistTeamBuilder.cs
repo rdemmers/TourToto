@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using TourToto.Model;
+using TourToto.Model.DataAccessObject;
 
-namespace TourToto.Builder
+namespace TourToto.Builder.Interface
 {
     internal interface ICyclistTeamBuilder
     {

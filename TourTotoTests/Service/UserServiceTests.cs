@@ -7,15 +7,16 @@ using System.Text;
 using System.Threading.Tasks;
 using TourToto.Model;
 using TourToto.Builder;
+using TourToto.Model.DataAccessObject;
 
 namespace TourToto.Service.Tests
 {
     [TestClass()]
     public class UserServiceTests
     {
-        UserService service;
-        int lastWrittenId;
-        User retrievedUser;
+        private UserService service;
+        private int lastWrittenId;
+        private User retrievedUser;
 
         public UserServiceTests()
         {
@@ -64,7 +65,6 @@ namespace TourToto.Service.Tests
             Console.WriteLine(actual.ToString());
         }
 
-        
         public void updateUser()
         {
             try
@@ -88,8 +88,5 @@ namespace TourToto.Service.Tests
 
             Assert.IsTrue(result);
         }
-
-        
-
     }
 }
