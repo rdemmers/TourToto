@@ -4,40 +4,40 @@ using TourToto.Model;
 
 namespace TourToto.Builder
 {
-    class CyclistTeamBuilder
+    class CyclistTeamBuilder : ICyclistTeamBuilder
     {
         private int id;
         private String name;
         private String country;
-        private List<Cyclist> cyclist;
+        private List<CyclistTeamDao> cyclists;
 
-        public CyclistTeamBuilder setId(int id)
+        public CyclistTeamBuilder SetId(int id)
         {
             this.id = id;
             return this;
         }
 
-        public CyclistTeamBuilder setName(String name)
+        public CyclistTeamBuilder SetName(String name)
         {
             this.name = name;
             return this;
         }
 
-        public CyclistTeamBuilder setCountry(String country)
+        public CyclistTeamBuilder SetCountry(String country)
         {
             this.country = country;
             return this;
         }
 
-        public CyclistTeamBuilder setCyclist(List<Cyclist> cyclist)
+        public CyclistTeamBuilder SetCyclists(List<CyclistTeamDao> cyclists)
         {
-            this.cyclist = cyclist;
+            this.cyclists = cyclists;
             return this;
         }
 
-        public Cyclist build()
+        public CyclistTeam Build()
         {
-            return new Cyclist();
+            return new CyclistTeam(id, name, country, cyclists);
         }
     }
 }

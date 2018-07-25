@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TourToto.Model;
 
 namespace TourToto.Builder
 {
-    public class UserBuilder
+    public class UserBuilder : IUserBuilder
     {
         private int id;
         private int credentials;
@@ -17,59 +13,58 @@ namespace TourToto.Builder
         private int userTeamId;
         private int totalScore;
         private int dayScore;
-        
 
-        public UserBuilder setId(int id)
+        public UserBuilder SetId(int id)
         {
             this.id = id;
             return this;
         }
 
-        public UserBuilder setCredentials(int credentials)
+        public UserBuilder SetCredentials(int credentials)
         {
             this.credentials = credentials;
             return this;
         }
 
-        public UserBuilder setName(String name)
+        public UserBuilder SetName(String name)
         {
             this.name = name;
             return this;
         }
 
-        public UserBuilder setEmail(String email)
+        public UserBuilder SetEmail(String email)
         {
             this.email = email;
             return this;
         }
 
-        public UserBuilder setPassword(String password)
+        public UserBuilder SetPassword(String password)
         {
             this.password = password;
             return this;
         }
 
-        public UserBuilder setUserTeamId(int userTeamId)
-        {
-            this.userTeamId = userTeamId;
-            return this;
-        }
-
-        public UserBuilder setTotalScore(int totalScore)
+        public UserBuilder SetTotalScore(int totalScore)
         {
             this.totalScore = totalScore;
             return this;
         }
 
-        public UserBuilder setDayScore(int dayScore)
+        public UserBuilder SetDayScore(int dayScore)
         {
             this.dayScore = dayScore;
             return this;
         }
 
-        public User build()
+        public UserBuilder SetUserTeamId(int userTeamId)
         {
-            return new User(id, credentials, name, email, password, userTeamId, totalScore, dayScore);
+            this.userTeamId = userTeamId;
+            return this;
+        }
+
+        public User Build()
+        {
+            return new User(id, credentials, name, email, password, totalScore, dayScore);
         }
     }
 }

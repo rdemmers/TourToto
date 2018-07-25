@@ -7,7 +7,7 @@ using TourToto.Model;
 
 namespace TourToto.Builder
 {
-    class DayBuilder
+    internal class DayBuilder : IDayBuilder
     {
         private int dayId;
         private String startingPoint;
@@ -17,43 +17,43 @@ namespace TourToto.Builder
         private String description;
         private int placementId;
 
-        public DayBuilder setDayId(int dayId)
+        public DayBuilder SetDayId(int dayId)
         {
             this.dayId = dayId;
             return this;
         }
 
-        public DayBuilder setStartingPoint(String startingPoint)
+        public DayBuilder SetStartingPoint(String startingPoint)
         {
             this.startingPoint = startingPoint;
             return this;
         }
 
-        public DayBuilder setEndPoint(String endPoint)
+        public DayBuilder SetEndPoint(String endPoint)
         {
             this.endPoint = endPoint;
             return this;
         }
 
-        public DayBuilder setDate(DateTime date)
+        public DayBuilder SetDate(DateTime date)
         {
             this.date = date;
             return this;
         }
 
-        public DayBuilder setLength(double length)
+        public DayBuilder SetLength(double length)
         {
             this.length = length;
             return this;
         }
 
-        public DayBuilder setDescription(String description)
+        public DayBuilder SetDescription(String description)
         {
             this.description = description;
             return this;
         }
 
-        public DayBuilder setPlacementId(int placementId)
+        public DayBuilder SetPlacementId(int placementId)
         {
             this.placementId = placementId;
             return this;
