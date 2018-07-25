@@ -12,12 +12,12 @@ using System.Windows.Media;
 
 namespace TourToto
 {
-    class Tototabitem : TabItem
+    class TabItem : System.Windows.Controls.TabItem
     {
         public SolidColorBrush BarColour { get; } = Brushes.LightBlue;
         public ScrollViewer scroll_viewer = new ScrollViewer();
         public Grid main_tab_grid = new Grid();
-        public Tototabitem(string header, TotoConfig.UserRole user_role, TotoConfig.GamePhase game_phase)
+        public TabItem(string header, TotoConfig.UserRole user_role, TotoConfig.GamePhase game_phase)
         {
             // set tab header:
             this.Header = header;

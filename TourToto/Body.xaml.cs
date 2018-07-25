@@ -47,7 +47,7 @@ namespace TourToto
             foreach(string menu_item in main_menu_items)
             {
                 ControlProperties properties = new ControlProperties { Header = menu_item };
-                TabItem tab_item = Factory.TabItemFactory(properties);
+                System.Windows.Controls.TabItem tab_item = Factory.TabItemFactory(properties);
                 main_tab_ctrl.Items.Add(tab_item);
             }
         }

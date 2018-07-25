@@ -329,9 +329,9 @@ namespace TourToto
             // Store properties in field:
             this.properties = properties;
             // Set type:
-            type = typeof(TabItem);
+            type = typeof(System.Windows.Controls.TabItem);
             // Create new TabItem:
-            new_item = new TabItem();
+            new_item = new System.Windows.Controls.TabItem();
 
             // SET PROPERTIES:
             SetAlignmentProperties();
