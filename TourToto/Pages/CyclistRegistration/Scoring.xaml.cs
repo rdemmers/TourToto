@@ -1,5 +1,4 @@
-﻿using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,23 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using TourToto.Connection;
 
-namespace TourToto
+namespace TourToto.Pages.CyclistRegistration
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Scoring.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Scoring : UserControl
     {
-        private TotoConfig Config { get; set; } = new TotoConfig("Default");
-        public MainWindow()
+        public Scoring()
         {
             InitializeComponent();
-            
-        }
-        public void WindowLoaded(object sender, RoutedEventArgs e)
-        {
         }
     }
 }
