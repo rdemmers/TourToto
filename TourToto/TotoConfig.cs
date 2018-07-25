@@ -151,56 +151,6 @@ namespace TourToto
                 menu.Add("Uitloggen");
             return menu;
         }
-        /*
-        private void SetMainTabControlStyle()
-        {
-            Style MainTabControlStyle = new Style(typeof(TabControl));
-            MainTabControlStyle.Setters.Add(new Setter(TabControl.PaddingProperty, new Thickness(2)));
-            MainTabControlStyle.Setters.Add(new Setter(TabControl.HorizontalContentAlignmentProperty, HorizontalAlignment.Center));
-            MainTabControlStyle.Setters.Add(new Setter(TabControl.VerticalContentAlignmentProperty, VerticalAlignment.Center));
-            ContentControl c1 = new ContentControl();
-            c1.SetBinding(ContentControl.ContentProperty, new Binding("StaticResource"));
-            c1.ContentStringFormat = "TabItem.Selected.Background";
-            MainTabControlStyle.Setters.Add(new Setter(TabControl.BackgroundProperty, c1)); // alternative for c1: SecundaryBackgroundColor
-            MainTabControlStyle.Setters.Add(new Setter(TabControl.BorderBrushProperty, Color.FromRgb(172, 172, 172)));
-            MainTabControlStyle.Setters.Add(new Setter(TabControl.BorderThicknessProperty, new Thickness(1)));
-            MainTabControlStyle.Setters.Add(new Setter(TabControl.ForegroundProperty, SystemColors.ControlTextBrushKey));
-
-            // Template:
-            ControlTemplate template = new ControlTemplate(typeof(TabControl));
-            FrameworkElementFactory root_grid = new FrameworkElementFactory(typeof(Grid));
-            root_grid.Name = "Grid";
-            root_grid.SetValue(Grid.NameProperty, "templateRoot");
-            root_grid.SetValue(Grid.ClipToBoundsProperty, true);
-            root_grid.SetValue(Grid.SnapsToDevicePixelsProperty, true);
-            // KeyboardNavigation.SetTabNavigation(TabControl, KeyboardNavigationMode.Local);
-
-            // Column definitions:
-            FrameworkElementFactory cd0 = new FrameworkElementFactory(typeof(ColumnDefinition));
-            cd0.SetValue(ColumnDefinition.NameProperty, "ColumnDefinition0");
-            root_grid.AppendChild(cd0);
-            FrameworkElementFactory cd1 = new FrameworkElementFactory(typeof(ColumnDefinition));
-            cd1.SetValue(ColumnDefinition.NameProperty, "ColumnDefinition1");
-            cd1.SetValue(ColumnDefinition.WidthProperty, 0);
-            root_grid.AppendChild(cd1);
-
-            // Row definitions:
-            FrameworkElementFactory rw0 = new FrameworkElementFactory(typeof(RowDefinition));
-            rw0.SetValue(RowDefinition.NameProperty, "RowDefinition0");
-            rw0.SetValue(RowDefinition.HeightProperty, new GridLength(Double.NaN, GridUnitType.Auto));
-            root_grid.AppendChild(rw0);
-            FrameworkElementFactory rw1 = new FrameworkElementFactory(typeof(RowDefinition));
-            rw1.SetValue(RowDefinition.NameProperty, "RowDefinition1");
-            rw1.SetValue(RowDefinition.HeightProperty, new GridLength(1D, GridUnitType.Star));
-
-            // Tab panel:
-            FrameworkElementFactory tbpnl = new FrameworkElementFactory(typeof(TabPanel));
-            tbpnl.SetValue(TabPanel.nam = "headerPanel");
-            tbpnl.SetValue(TabPanel.BackgroundProperty = Brushes.Transparent);
-
-
-            template.VisualTree = root_grid;
-        }
-        */
+        
     }
 }

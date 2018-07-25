@@ -29,35 +29,35 @@ namespace TourToto.Service.Tests
             registerUser();
             getUserTest_validId();
             updateUser();
-            testDelete();
+            //testDelete();
         }
 
         public void registerUser()
         {
             UserBuilder builder = new UserBuilder();
             User user = builder
-                            .setCredentials(1)
-                            .setName("Entity thijs werkt")
-                            .setEmail("test@gmail.com")
-                            .setPassword("pasword")
-                            .build();
-            int result = service.add(user);
+                            .SetCredentials(1)
+                            .SetName("Entity thijs werkt")
+                            .SetEmail("test@gmail.com")
+                            .SetPassword("pasword")
+                            .Build();
+            int result = service.Add(user);
             lastWrittenId = result;
             Assert.IsTrue(result > 0);
         }
 
         public void getUserTest_validId()
         {
-            User actual = service.get(lastWrittenId);
+            User actual = service.Get(lastWrittenId);
             UserBuilder builder = new UserBuilder();
             User expected = builder
-                            .setCredentials(1)
-                            .setName("Entity thijs werkt")
-                            .setEmail("test@gmail.com")
-                            .setPassword("pasword")
-                            .build();
-            Assert.AreEqual(expected.name, actual.name);
-            Assert.AreEqual(expected.email, actual.email);
+                            .SetCredentials(1)
+                            .SetName("Entity thijs werkt")
+                            .SetEmail("test@gmail.com")
+                            .SetPassword("pasword")
+                            .Build();
+            Assert.AreEqual(expected.Name, actual.Name);
+            Assert.AreEqual(expected.Email, actual.Email);
 
             retrievedUser = actual;
 
@@ -69,12 +69,12 @@ namespace TourToto.Service.Tests
         {
             try
             {
-                retrievedUser.name = "updatenaam";
-                service.update(retrievedUser);
+                retrievedUser.Name = "updatenaam";
+                service.Update(retrievedUser);
 
-                User updatedUser = service.get(retrievedUser.id);
+                User updatedUser = service.Get(retrievedUser.Id);
 
-                Assert.AreEqual(updatedUser.name, "updatenaam");
+                Assert.AreEqual(updatedUser.Name, "updatenaam");
             }
             catch (Exception e)
             {
@@ -84,33 +84,12 @@ namespace TourToto.Service.Tests
 
         public void testDelete()
         {
-            bool result = service.delete(lastWrittenId);
+            bool result = service.Delete(lastWrittenId);
 
             Assert.IsTrue(result);
         }
 
-        /*[TestMethod()]
-        [ExpectedException(typeof(InvalidOperationException))]
-        public void getUserTest_invalidId()
-        {
-            User actual = service.getUser(50);
-        }
-
-        [TestMethod()]
-        public void updateUserTest_validUser()
-        {
-            User user = new User(1, 10, "My Name UPDATED", "testUpdated@gmail.com", "password");
-            bool result = service.updateUser(user);
-            Assert.IsTrue(result);
-        }
-
-        [TestMethod()]
-        [ExpectedException(typeof(InvalidOperationException))]
-        public void updateUserTest_nonExistingUser()
-        {
-            User user = new User(999, 10, "My Name UPDATED", "testUpdated@gmail.com", "password");
-            bool result = service.updateUser(user);
-        }*/
+        
 
     }
 }

@@ -7,45 +7,42 @@ using TourToto.Model;
 
 namespace TourToto.Service
 {
-
-    public class UserService
+    public class UserService : IUserService
     {
-        UserDao dao;
+        private IUserDao dao;
 
-        public UserService(UserDao dao)
+        public UserService(IUserDao dao)
         {
             this.dao = dao;
         }
 
-        public int add(User user)
+        public int Add(User user)
         {
-
-            int lastWrittenID = dao.add(user);
+            int lastWrittenID = dao.Add(user);
             return lastWrittenID;
         }
 
-        public User get(int userId)
+        public User Get(int userId)
         {
-            return dao.get(userId);
+            return dao.Get(userId);
         }
 
-        public bool update(User user)
+        public bool Update(User user)
         {
-
-            return dao.update(user);
+            return dao.Update(user);
         }
 
-        public bool delete(int userId)
+        public bool Delete(int userId)
         {
-            return dao.delete(userId);
+            return dao.Delete(userId);
         }
 
-        public int getUserScoreTotal(int userId)
+        public int GetUserScoreTotal(int userId)
         {
             return 0;
         }
 
-        public int getUserScoreDay(int userId, int day)
+        public int GetUserScoreDay(int userId, int day)
         {
             return 0;
         }
