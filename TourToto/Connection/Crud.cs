@@ -7,68 +7,40 @@ namespace TourToto.Connection
         private static IRunQuery query;
         private static ICrud crud = null;
 
-        public static ICrud Instance
-        {
-            get
-            {
-                if (crud == null)
-                {
-                    crud = new Crud();
-                    query = RunQuery.GetInstance;
-                    return crud;
-                }
-                else
-                {
-                    return crud;
-                }
-            }
-        }
+        public static ICrud Instance => crud ?? InstantiateCrud();
 
         public SqlDataReader Get(ISqlQueryData queryData)
         {
             SqlDataReader reader = query.ExecuteReader(queryData);
 
-            if (reader.HasRows)
-            {
-                return reader;
-            }
-            else
-            {
-                return null;
-            }
+            return (reader.HasRows) ? reader : null;
         }
 
         public bool Update(ISqlQueryData queryData)
         {
             int result = RunQuery.GetInstance.ExecuteNonQuery(queryData);
 
-            if (result > 1)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return (result > 1) ? true : false;
         }
 
         public bool Delete(ISqlQueryData queryData)
         {
             int result = RunQuery.GetInstance.ExecuteNonQuery(queryData);
-            if (result >= 1)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+
+            return (result >= 1) ? true : false;
         }
 
         public int Create(ISqlQueryData queryData)
         {
             int lastWrittenId = (int)(decimal)RunQuery.GetInstance.ExecuteScalar(queryData);
             return lastWrittenId;
+        }
+
+        private static ICrud InstantiateCrud()
+        {
+            crud = new Crud();
+            query = RunQuery.GetInstance;
+            return crud;
         }
     }
 }

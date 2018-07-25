@@ -17,12 +17,11 @@ namespace TourToto.Model
 
         //public UserTeamDao()
         //{
-        //    crud = Crud.Instance;
+        //    crud = Crud.GetInstance;
         //}
 
         //public int Add(UserTeam team)
         //{
-
         //    SqlQueryData queryData = new SqlQueryData()
         //    {
         //        SqlQuery = "INSERT INTO cyclist_team " +
@@ -30,7 +29,7 @@ namespace TourToto.Model
         //        "VALUES (@name, @country); " +
         //        "SELECT SCOPE_IDENTITY();",
         //        CommandType = CommandType.Text,
-        //        QueryType = QueryType.non_query
+        //        QueryType = QueryType.NonQuery
         //    };
         //    queryData.addParameter("@name", SqlDbType.VarChar, team.Name);
         //    queryData.addParameter("@country", SqlDbType.VarChar, team.Country);
@@ -56,12 +55,11 @@ namespace TourToto.Model
         //        "SET name = @name, country = @country " +
         //        "WHERE id = @cyclistId; ",
         //        CommandType = CommandType.Text,
-        //        QueryType = QueryType.non_query
+        //        QueryType = QueryType.NonQuery
         //    };
         //    queryData.addParameter("@name", SqlDbType.VarChar, team.Name);
         //    queryData.addParameter("@country", SqlDbType.VarChar, team.Country);
         //    queryData.addParameter("@cyclistId", SqlDbType.Int, team.Id.ToString());
-
 
         //    return crud.update(queryData);
         //}
@@ -74,7 +72,7 @@ namespace TourToto.Model
         //        SqlQuery = "DELETE FROM cyclist_team " +
         //        "WHERE id = @cyclistId; ",
         //        CommandType = CommandType.Text,
-        //        QueryType = QueryType.non_query
+        //        QueryType = QueryType.NonQuery
         //    };
 
         //    queryData.addParameter("@cyclistId", SqlDbType.Int, cyclistId.ToString());
@@ -101,13 +99,11 @@ namespace TourToto.Model
 
         //        while (reader.Read())
         //        {
-
         //            CyclistTeam team = builder
         //                .SetId(id)
         //                .SetName(reader.GetString(1))
         //                .SetCountry(reader.GetString(2))
         //                .Build();
-
 
         //            reader.Close();
 
@@ -127,7 +123,5 @@ namespace TourToto.Model
         //        return new CyclistTeam();
         //    }
         //}
-        
-
     }
 }

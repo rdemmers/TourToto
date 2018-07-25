@@ -76,7 +76,7 @@ namespace TourToto.Model
 
         public User Get(int id)
         {
-            SqlQueryData queryData = new SqlQueryData("SELECT * FROM users WHERE [id] = @id", QueryType.reader);
+            SqlQueryData queryData = new SqlQueryData("SELECT * FROM users WHERE [id] = @id", QueryType.Reader);
 
             queryData.AddParameter("@id", SqlDbType.VarChar, Convert.ToString(id));
 

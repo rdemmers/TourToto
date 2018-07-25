@@ -6,55 +6,50 @@ namespace TourToto.Connection
 {
     public enum QueryType
     {
-        non_query,
-        scalar,
-        reader
+        NonQuery,
+        Scalar,
+        Reader
     }
 
     public class SqlTransactionData : IEnumerable, ISqlTransactionData
     {
-        private List<SqlQueryData> sql_queries = new List<SqlQueryData>();
+        private List<SqlQueryData> sqlQueries = new List<SqlQueryData>();
 
         public bool IsUsable()
         {
-            foreach (SqlQueryData sql_query_data in sql_queries)
+            foreach (SqlQueryData sqlQueryData in sqlQueries)
             {
-                if (sql_query_data.IsUsable == false)
+                if (sqlQueryData.IsUsable == false)
                     return false;
             }
             return true;
         }
 
-        //====================================================================================================
         IEnumerator IEnumerable.GetEnumerator()
         {
             return (IEnumerator)GetEnumerator();
         }
 
-        //====================================================================================================
         public SqlTransactionDataEnum GetEnumerator()
         {
-            return new SqlTransactionDataEnum(sql_queries);
+            return new SqlTransactionDataEnum(sqlQueries);
         }
 
-        //====================================================================================================
         public bool IsEmpty()
         {
-            return IsUsable() && sql_queries.Count == 0;
+            return IsUsable() && sqlQueries.Count == 0;
         }
 
-        //====================================================================================================
-        public void AddSqlQueryData(SqlQueryData sql_query_data)
+        public void AddSqlQueryData(SqlQueryData sqlQueryData)
         {
-            sql_queries.Add(sql_query_data);
+            sqlQueries.Add(sqlQueryData);
         }
 
-        //====================================================================================================
         public SqlQueryData GetNextSqlQueryData()
         {
-            SqlQueryData sql_query_data = sql_queries.ElementAt(0);
-            sql_queries.RemoveAt(0);
-            return sql_query_data;
+            SqlQueryData sqlQueryData = sqlQueries.ElementAt(0);
+            sqlQueries.RemoveAt(0);
+            return sqlQueryData;
         }
     }
 }

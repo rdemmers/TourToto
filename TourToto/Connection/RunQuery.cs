@@ -22,47 +22,47 @@ namespace TourToto.Connection
         {
             conn.Open();
 
-            SqlCommand command = conn.CreateCommand();
-            SqlTransaction transaction = conn.BeginTransaction();
+            SqlCommand sqlCommand = conn.CreateCommand();
+            SqlTransaction sqlTransaction = conn.BeginTransaction();
 
-            command.Connection = conn;
-            command.Transaction = transaction;
+            sqlCommand.Connection = conn;
+            sqlCommand.Transaction = sqlTransaction;
 
             try
             {
                 foreach (ISqlQueryData queryData in transactionData)
                 {
                     // Add query string to command:
-                    command.CommandText = queryData.SqlQuery;
+                    sqlCommand.CommandText = queryData.SqlQuery;
                     // Add parameter definitions to command:
                     if (queryData.HasParameters)
                     {
                         for (int i = 0; i < queryData.NrOfParameters; i++)
                         {
-                            command.Parameters.Add(queryData.SqlParameter.ElementAt(0), queryData.GetNextParameterType());
-                            command.Parameters[i].Value = queryData.GetNextParameterValue();
+                            sqlCommand.Parameters.Add(queryData.SqlParameter.ElementAt(0), queryData.GetNextParameterType());
+                            sqlCommand.Parameters[i].Value = queryData.GetNextParameterValue();
                         }
                     }
                     // Set command type:
-                    command.CommandType = queryData.CommandType;
+                    sqlCommand.CommandType = queryData.CommandType;
                     // Execute correct query
                     switch (queryData.QueryType)
                     {
-                        case QueryType.non_query:
-                            command.ExecuteNonQuery();
+                        case QueryType.NonQuery:
+                            sqlCommand.ExecuteNonQuery();
                             break;
 
-                        case QueryType.reader:
-                            command.ExecuteReader();
+                        case QueryType.Reader:
+                            sqlCommand.ExecuteReader();
                             break;
 
-                        case QueryType.scalar:
-                            command.ExecuteScalar();
+                        case QueryType.Scalar:
+                            sqlCommand.ExecuteScalar();
                             break;
                     }
                 }
                 // Commit queries:
-                transaction.Commit();
+                sqlTransaction.Commit();
                 return true;
             }
             catch (Exception e)
@@ -71,7 +71,7 @@ namespace TourToto.Connection
                     MessageBoxButton.OK, MessageBoxImage.Error);
                 try
                 {
-                    transaction.Rollback();
+                    sqlTransaction.Rollback();
                 }
                 catch (Exception e2)
                 {
@@ -85,26 +85,26 @@ namespace TourToto.Connection
         //====================================================================================================
         // Function for executing queries that do not return data (e.g. UPDATE, INSERT, DELETE, etc.)
         // returns number of affected rows
-        public int ExecuteNonQuery(ISqlQueryData input)
+        public int ExecuteNonQuery(ISqlQueryData queryData)
         {
-            using (SqlCommand cmd = new SqlCommand(input.SqlQuery, conn))
+            using (var command = new SqlCommand(queryData.SqlQuery, conn))
             {
-                cmd.CommandType = input.CommandType;
-                if (input.HasParameters)
+                command.CommandType = queryData.CommandType;
+                if (queryData.HasParameters)
                 {
-                    for (int i = 0; i < input.NrOfParameters; i++)
+                    for (int i = 0; i < queryData.NrOfParameters; i++)
                     {
-                        cmd.Parameters.Add(input.SqlParameter.ElementAt(0), input.GetNextParameterType());
-                        cmd.Parameters[i].Value = input.GetNextParameterValue();
+                        command.Parameters.Add(queryData.SqlParameter.ElementAt(0), queryData.GetNextParameterType());
+                        command.Parameters[i].Value = queryData.GetNextParameterValue();
                     }
                 }
-                SqlParameter idParameter = new SqlParameter("@ID", SqlDbType.Int)
+                var idParameter = new SqlParameter("@ID", SqlDbType.Int)
                 {
                     Direction = ParameterDirection.Output
                 };
-                cmd.Parameters.Add(idParameter);
+                command.Parameters.Add(idParameter);
                 conn.Open();
-                int result = cmd.ExecuteNonQuery();
+                int result = command.ExecuteNonQuery();
                 conn.Close();
                 return result;
             }
@@ -112,23 +112,23 @@ namespace TourToto.Connection
 
         //====================================================================================================
         // Function for executing queries that return data of a single field
-        public Object ExecuteScalar(ISqlQueryData input)
+        public object ExecuteScalar(ISqlQueryData queryData)
         {
-            if (!input.IsUsable) return false;
+            if (!queryData.IsUsable) return false;
 
-            using (SqlCommand cmd = new SqlCommand(input.SqlQuery, conn))
+            using (var command = new SqlCommand(queryData.SqlQuery, conn))
             {
-                cmd.CommandType = input.CommandType;
-                if (input.HasParameters)
+                command.CommandType = queryData.CommandType;
+                if (queryData.HasParameters)
                 {
-                    for (int i = 0; i < input.NrOfParameters; i++)
+                    for (int i = 0; i < queryData.NrOfParameters; i++)
                     {
-                        cmd.Parameters.Add(input.SqlParameter.ElementAt(0), input.GetNextParameterType());
-                        cmd.Parameters[i].Value = input.GetNextParameterValue();
+                        command.Parameters.Add(queryData.SqlParameter.ElementAt(0), queryData.GetNextParameterType());
+                        command.Parameters[i].Value = queryData.GetNextParameterValue();
                     }
                 }
                 conn.Open();
-                Object result = cmd.ExecuteScalar();
+                var result = command.ExecuteScalar();
                 conn.Close();
                 return result;
             }
@@ -136,22 +136,22 @@ namespace TourToto.Connection
 
         //====================================================================================================
         // Function for execution regular SELECT queries that return multiple fields
-        public SqlDataReader ExecuteReader(ISqlQueryData input)
+        public SqlDataReader ExecuteReader(ISqlQueryData queryData)
         {
-            using (SqlCommand cmd = new SqlCommand(input.SqlQuery, conn))
+            using (var command = new SqlCommand(queryData.SqlQuery, conn))
             {
-                cmd.CommandType = input.CommandType;
-                if (input.HasParameters)
+                command.CommandType = queryData.CommandType;
+                if (queryData.HasParameters)
                 {
-                    for (int i = 0; i < input.NrOfParameters; i++)
+                    for (int i = 0; i < queryData.NrOfParameters; i++)
                     {
-                        cmd.Parameters.Add(input.SqlParameter.ElementAt(0), input.GetNextParameterType());
-                        cmd.Parameters[i].Value = input.GetNextParameterValue();
+                        command.Parameters.Add(queryData.SqlParameter.ElementAt(0), queryData.GetNextParameterType());
+                        command.Parameters[i].Value = queryData.GetNextParameterValue();
                     }
                 }
                 conn.Open();
 
-                SqlDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                SqlDataReader reader = command.ExecuteReader(CommandBehavior.CloseConnection);
 
                 return reader;
             }

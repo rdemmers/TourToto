@@ -9,76 +9,56 @@ namespace TourToto.Connection
     {
         private CommandType? commandType = CommandType.Text;
 
-        private bool hasParameters = false;
+        public int NrOfParameters { get; set; } = 0;
+        public QueryType? QueryType { get; set; } = null;
 
-        private int nrOfParameters = 0;
+        public List<string> SqlParameter { get; set; } = new List<string>();
+        public List<SqlDbType> SqlParameterType { get; set; } = new List<SqlDbType>();
+        public List<string> SqlParameterValue { get; set; } = new List<string>();
 
-        public SqlQueryData(string sqlQuery, QueryType? queryType = Connection.QueryType.non_query)
+        public string SqlQuery { get; set; }
+        public CommandType CommandType => CommandType;
+
+        public SqlQueryData(string sqlQuery, QueryType? queryType = Connection.QueryType.NonQuery)
         {
             QueryType = queryType;
             SqlQuery = sqlQuery;
         }
 
-        public CommandType CommandType
-        {
-            get => CommandType;
-        }
+        public bool HasParameters { get; private set; } = false;
 
-        public bool HasParameters
-        {
-            get => hasParameters;
-        }
-
-        public bool IsUsable
-        {
-            get
-            {
-                return isUsable();
-            }
-        }
-
-        public int NrOfParameters
-        {
-            get => NrOfParameters1;
-        }
-
-        public int NrOfParameters1 { get => nrOfParameters; set => nrOfParameters = value; }
-        public QueryType? QueryType { get; set; } = null;
-        public List<string> SqlParameter { get; set; } = new List<string>();
-        public List<SqlDbType> SqlParameterType { get; set; } = new List<SqlDbType>();
-        public List<string> SqlParameterValue { get; set; } = new List<string>();
-        public string SqlQuery { get; set; } = String.Empty;
+        public bool IsUsable => isUsable();
 
         public void AddParameter(string sqlParameter, SqlDbType sqlDbType,
             string value)
         {
-            if (sqlParameter != String.Empty && value != String.Empty)
+            if (sqlParameter != string.Empty && value != string.Empty)
             {
                 SqlParameter.Add(sqlParameter);
                 SqlParameterType.Add(sqlDbType);
                 SqlParameterValue.Add(value);
-                NrOfParameters1++;
-                hasParameters = true;
+                NrOfParameters++;
+                HasParameters = true;
             }
         }
 
-        public bool AddQueryData(string sql_query, CommandType command_type, QueryType query_type,
-            List<string> sql_parameter = null, List<SqlDbType> sql_parameter_type = null,
-            List<string> sql_parameter_value = null)
+        public bool AddQueryData(string sqlQuery, CommandType commandType, QueryType queryType,
+            List<string> sqlParameter = null, List<SqlDbType> sqlParameterType = null,
+            List<string> sqlParameterValue = null)
         {
-            SqlQuery = sql_query;
-            QueryType = query_type;
-            if (sql_parameter != null && sql_parameter_type != null && sql_parameter_value != null)
+            SqlQuery = sqlQuery;
+            QueryType = queryType;
+            if (sqlParameter != null && sqlParameterType != null && sqlParameterValue != null)
             {
-                SqlParameter = sql_parameter;
-                SqlParameterType = sql_parameter_type;
-                SqlParameterValue = sql_parameter_value;
-                hasParameters = true;
+                SqlParameter = sqlParameter;
+                SqlParameterType = sqlParameterType;
+                SqlParameterValue = sqlParameterValue;
+                HasParameters = true;
                 return true;
             }
-            else if (sql_parameter == null && sql_parameter_type == null && sql_parameter_value == null)
+            else if (sqlParameter == null && sqlParameterType == null && sqlParameterValue == null)
             {
-                hasParameters = false;
+                HasParameters = false;
                 return true;
             }
             else
@@ -110,16 +90,16 @@ namespace TourToto.Connection
         {
             if (SqlQuery == String.Empty) return true;
 
-            char param_id = '@';
-            int start_index = -1;
-            int hit_count = 0;
+            char paramId = '@';
+            int startIndex = -1;
+            int hitCount = 0;
             while (true)
             {
-                start_index = SqlQuery.IndexOf(param_id, start_index + 1, SqlQuery.Length - start_index - 1);
-                if (start_index < 0) break;
-                hit_count++;
+                startIndex = SqlQuery.IndexOf(paramId, startIndex + 1, SqlQuery.Length - startIndex - 1);
+                if (startIndex < 0) break;
+                hitCount++;
             }
-            if (hit_count == NrOfParameters1)
+            if (hitCount == NrOfParameters)
                 return true;
             else
                 return false;

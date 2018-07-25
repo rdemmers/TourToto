@@ -4,11 +4,11 @@ namespace TourToto.Connection
 {
     internal interface IRunQuery
     {
-        int ExecuteNonQuery(ISqlQueryData input);
+        int ExecuteNonQuery(ISqlQueryData queryData);
 
-        SqlDataReader ExecuteReader(ISqlQueryData input);
+        SqlDataReader ExecuteReader(ISqlQueryData queryData);
 
-        object ExecuteScalar(ISqlQueryData input);
+        object ExecuteScalar(ISqlQueryData queryData);
 
         bool ExecuteTransaction(ISqlTransactionData transactionData);
     }

@@ -8,19 +8,19 @@ namespace TourToto.Connection
     public class SqlTransactionDataEnum : IEnumerator, ISqlTransactionDataEnum
     {
         // Modified from: https://msdn.microsoft.com/en-us/library/system.collections.ienumerable.getenumerator
-        public List<SqlQueryData> sql_queries;
+        public List<SqlQueryData> SqlQueries;
 
         private int position = -1;
 
         public SqlTransactionDataEnum(List<SqlQueryData> list)
         {
-            sql_queries = list;
+            SqlQueries = list;
         }
 
         public bool MoveNext()
         {
             position++;
-            return (position < sql_queries.Count);
+            return (position < SqlQueries.Count);
         }
 
         public void Reset()
@@ -28,13 +28,7 @@ namespace TourToto.Connection
             position = -1;
         }
 
-        object IEnumerator.Current
-        {
-            get
-            {
-                return Current;
-            }
-        }
+        object IEnumerator.Current => Current;
 
         public SqlQueryData Current
         {
@@ -42,7 +36,7 @@ namespace TourToto.Connection
             {
                 try
                 {
-                    return sql_queries.ElementAt(position);
+                    return SqlQueries.ElementAt(position);
                 }
                 catch (ArgumentOutOfRangeException)
                 {
