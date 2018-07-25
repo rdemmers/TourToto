@@ -17,14 +17,8 @@ namespace TourToto.Model
 
         public int Add(Cyclist cyclist)
         {
-            SqlQueryData queryData = new SqlQueryData()
-            {
-                SqlQuery = "INSERT INTO cyclists " +
-                "(name) " +
-                "VALUES (@name); " +
-                "SELECT SCOPE_IDENTITY();",
-                QueryType = QueryType.non_query
-            };
+            SqlQueryData queryData = new SqlQueryData("INSERT INTO cyclists (name) VALUES (@name); SELECT SCOPE_IDENTITY();");
+
             queryData.AddParameter("@name", SqlDbType.VarChar, cyclist.Name);
 
             try
@@ -42,13 +36,8 @@ namespace TourToto.Model
 
         public bool Update(Cyclist cyclist)
         {
-            SqlQueryData queryData = new SqlQueryData()
-            {
-                SqlQuery = "UPDATE cyclists " +
-                "SET name = @name " +
-                "WHERE id = @cyclistId; ",
-                QueryType = QueryType.non_query
-            };
+            SqlQueryData queryData = new SqlQueryData("UPDATE cyclists SET name = @name WHERE id = @cyclistId; ");
+
             queryData.AddParameter("@name", SqlDbType.VarChar, cyclist.Name);
             queryData.AddParameter("@cyclistId", SqlDbType.Int, cyclist.Id.ToString());
 
@@ -57,13 +46,7 @@ namespace TourToto.Model
 
         public bool Delete(int cyclistId)
         {
-            Console.WriteLine("Update is triggered");
-            SqlQueryData queryData = new SqlQueryData()
-            {
-                SqlQuery = "DELETE FROM cyclists " +
-                "WHERE id = @cyclistId; ",
-                QueryType = QueryType.non_query
-            };
+            SqlQueryData queryData = new SqlQueryData("DELETE FROM cyclists WHERE id = @cyclistId; ");
 
             queryData.AddParameter("@cyclistId", SqlDbType.Int, cyclistId.ToString());
 
@@ -72,11 +55,8 @@ namespace TourToto.Model
 
         public Cyclist Get(int id)
         {
-            SqlQueryData queryData = new SqlQueryData()
-            {
-                SqlQuery = "SELECT * FROM cyclists WHERE [id] = @id",
-                QueryType = QueryType.reader
-            };
+            SqlQueryData queryData = new SqlQueryData("SELECT * FROM cyclists WHERE [id] = @id", QueryType.reader);
+
             queryData.AddParameter("@id", SqlDbType.VarChar, Convert.ToString(id));
 
             try

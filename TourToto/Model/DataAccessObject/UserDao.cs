@@ -22,14 +22,13 @@ namespace TourToto.Model
 
         public int Add(User user)
         {
-            SqlQueryData queryData = new SqlQueryData()
-            {
-                SqlQuery = "INSERT INTO users " +
-                "(name,email,password,credentials) " +
-                "VALUES (@name, @email, @password, @credentials); " +
-                "SELECT SCOPE_IDENTITY();",
-                QueryType = QueryType.non_query
-            };
+            String query = "INSERT INTO users " +
+                           "(name,email,password,credentials) " +
+                           "VALUES (@name, @email, @password, @credentials); " +
+                           "SELECT SCOPE_IDENTITY();";
+
+            SqlQueryData queryData = new SqlQueryData(query);
+
             queryData.AddParameter("@name", SqlDbType.VarChar, user.Name);
             queryData.AddParameter("@email", SqlDbType.VarChar, user.Email);
             queryData.AddParameter("@password", SqlDbType.VarChar, user.Password);
@@ -42,7 +41,8 @@ namespace TourToto.Model
             catch (Exception e)
             {
                 MessageBox.Show("Unable to register new user. " + e.Message, "RegisterNewUser error type: " +
-                    e.GetType(), MessageBoxButton.OK, MessageBoxImage.Error);
+                                                                             e.GetType(), MessageBoxButton.OK,
+                    MessageBoxImage.Error);
                 Console.WriteLine(e.StackTrace);
                 return 0;
             }
@@ -50,13 +50,12 @@ namespace TourToto.Model
 
         public bool Update(User user)
         {
-            SqlQueryData queryData = new SqlQueryData()
-            {
-                SqlQuery = "UPDATE users " +
-                "SET name = @name, email = @email, password = @password, credentials = @credentials " +
-                "WHERE id = @userId; ",
-                QueryType = QueryType.non_query
-            };
+            String query = "UPDATE users " +
+                           "SET name = @name, email = @email, password = @password, credentials = @credentials " +
+                           "WHERE id = @userId; ";
+
+            SqlQueryData queryData = new SqlQueryData(query);
+
             queryData.AddParameter("@name", SqlDbType.VarChar, user.Name);
             queryData.AddParameter("@email", SqlDbType.VarChar, user.Email);
             queryData.AddParameter("@password", SqlDbType.VarChar, user.Password);
@@ -68,13 +67,7 @@ namespace TourToto.Model
 
         public bool Delete(int userId)
         {
-            Console.WriteLine("Update is triggered");
-            SqlQueryData queryData = new SqlQueryData()
-            {
-                SqlQuery = "DELETE FROM users " +
-                "WHERE id = @userId; ",
-                QueryType = QueryType.non_query
-            };
+            SqlQueryData queryData = new SqlQueryData("DELETE FROM users WHERE id = @userId;");
 
             queryData.AddParameter("@userId", SqlDbType.Int, userId.ToString());
 
@@ -83,11 +76,8 @@ namespace TourToto.Model
 
         public User Get(int id)
         {
-            SqlQueryData queryData = new SqlQueryData()
-            {
-                SqlQuery = "SELECT * FROM users WHERE [id] = @id",
-                QueryType = QueryType.reader
-            };
+            SqlQueryData queryData = new SqlQueryData("SELECT * FROM users WHERE [id] = @id", QueryType.reader);
+
             queryData.AddParameter("@id", SqlDbType.VarChar, Convert.ToString(id));
 
             UserBuilder userBuilder = new UserBuilder();
@@ -108,8 +98,6 @@ namespace TourToto.Model
                         userTeamId = reader.GetInt32(5);
                     }
 
-                    //User user = new User(reader.GetInt32(1), reader.GetInt32(1), reader.GetInt32(1), reader.GetInt32(1))
-
                     User user = userBuilder
                         .SetId(id)
                         .SetCredentials(reader.GetInt32(1))
@@ -129,7 +117,8 @@ namespace TourToto.Model
             catch (Exception e)
             {
                 MessageBox.Show("Unable to retrieve user. " + e.Message, "IsUserPassword error type: " +
-                    e.GetType(), MessageBoxButton.OK, MessageBoxImage.Error);
+                                                                         e.GetType(), MessageBoxButton.OK,
+                    MessageBoxImage.Error);
                 Console.WriteLine(e.StackTrace);
                 Console.WriteLine(e.Message);
                 return new User();

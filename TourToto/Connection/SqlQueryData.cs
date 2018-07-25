@@ -13,14 +13,20 @@ namespace TourToto.Connection
 
         private int nrOfParameters = 0;
 
-        public bool HasParameters
+        public SqlQueryData(string sqlQuery, QueryType? queryType = Connection.QueryType.non_query)
         {
-            get => hasParameters;
+            QueryType = queryType;
+            SqlQuery = sqlQuery;
         }
 
         public CommandType CommandType
         {
             get => CommandType;
+        }
+
+        public bool HasParameters
+        {
+            get => hasParameters;
         }
 
         public bool IsUsable
@@ -36,12 +42,12 @@ namespace TourToto.Connection
             get => NrOfParameters1;
         }
 
+        public int NrOfParameters1 { get => nrOfParameters; set => nrOfParameters = value; }
         public QueryType? QueryType { get; set; } = null;
         public List<string> SqlParameter { get; set; } = new List<string>();
         public List<SqlDbType> SqlParameterType { get; set; } = new List<SqlDbType>();
         public List<string> SqlParameterValue { get; set; } = new List<string>();
         public string SqlQuery { get; set; } = String.Empty;
-        public int NrOfParameters1 { get => nrOfParameters; set => nrOfParameters = value; }
 
         public void AddParameter(string sqlParameter, SqlDbType sqlDbType,
             string value)

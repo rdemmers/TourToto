@@ -18,14 +18,13 @@ namespace TourToto.Model
 
         public int Add(CyclistTeam team)
         {
-            SqlQueryData queryData = new SqlQueryData()
-            {
-                SqlQuery = "INSERT INTO cyclist_team " +
+            String query = "INSERT INTO cyclist_team " +
                 "(name, country) " +
                 "VALUES (@name, @country); " +
-                "SELECT SCOPE_IDENTITY();",
-                QueryType = QueryType.non_query
-            };
+                "SELECT SCOPE_IDENTITY();";
+
+            SqlQueryData queryData = new SqlQueryData(query);
+
             queryData.AddParameter("@name", SqlDbType.VarChar, team.Name);
             queryData.AddParameter("@country", SqlDbType.VarChar, team.Country);
 
@@ -44,13 +43,11 @@ namespace TourToto.Model
 
         public bool Update(CyclistTeam team)
         {
-            SqlQueryData queryData = new SqlQueryData()
-            {
-                SqlQuery = "UPDATE cyclist_team " +
+            String query = "UPDATE cyclist_team " +
                 "SET name = @name, country = @country " +
-                "WHERE id = @cyclistId; ",
-                QueryType = QueryType.non_query
-            };
+                "WHERE id = @cyclistId; ";
+            SqlQueryData queryData = new SqlQueryData(query);
+
             queryData.AddParameter("@name", SqlDbType.VarChar, team.Name);
             queryData.AddParameter("@country", SqlDbType.VarChar, team.Country);
             queryData.AddParameter("@cyclistId", SqlDbType.Int, team.Id.ToString());
@@ -60,13 +57,7 @@ namespace TourToto.Model
 
         public bool Delete(int cyclistId)
         {
-            Console.WriteLine("Update is triggered");
-            SqlQueryData queryData = new SqlQueryData()
-            {
-                SqlQuery = "DELETE FROM cyclist_team " +
-                "WHERE id = @cyclistId; ",
-                QueryType = QueryType.non_query
-            };
+            SqlQueryData queryData = new SqlQueryData("DELETE FROM cyclist_team WHERE id = @cyclistId; ");
 
             queryData.AddParameter("@cyclistId", SqlDbType.Int, cyclistId.ToString());
 
@@ -75,11 +66,8 @@ namespace TourToto.Model
 
         public CyclistTeam Get(int id)
         {
-            SqlQueryData queryData = new SqlQueryData()
-            {
-                SqlQuery = "SELECT * FROM cyclist_team WHERE [id] = @id",
-                QueryType = QueryType.reader
-            };
+            SqlQueryData queryData = new SqlQueryData("SELECT * FROM cyclist_team WHERE [id] = @id", QueryType.reader);
+
             queryData.AddParameter("@id", SqlDbType.VarChar, Convert.ToString(id));
 
             CyclistTeamBuilder builder = new CyclistTeamBuilder();
