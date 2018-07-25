@@ -14,7 +14,7 @@ namespace TourToto.Connection
                 if (crud == null)
                 {
                     crud = new Crud();
-                    query = RunQuery.Instance;
+                    query = RunQuery.GetInstance;
                     return crud;
                 }
                 else
@@ -40,7 +40,7 @@ namespace TourToto.Connection
 
         public bool Update(ISqlQueryData queryData)
         {
-            int result = RunQuery.Instance.ExecuteNonQuery(queryData);
+            int result = RunQuery.GetInstance.ExecuteNonQuery(queryData);
 
             if (result > 1)
             {
@@ -54,7 +54,7 @@ namespace TourToto.Connection
 
         public bool Delete(ISqlQueryData queryData)
         {
-            int result = RunQuery.Instance.ExecuteNonQuery(queryData);
+            int result = RunQuery.GetInstance.ExecuteNonQuery(queryData);
             if (result >= 1)
             {
                 return true;
@@ -67,7 +67,7 @@ namespace TourToto.Connection
 
         public int Create(ISqlQueryData queryData)
         {
-            int lastWrittenId = (int)(decimal)RunQuery.Instance.ExecuteScalar(queryData);
+            int lastWrittenId = (int)(decimal)RunQuery.GetInstance.ExecuteScalar(queryData);
             return lastWrittenId;
         }
     }

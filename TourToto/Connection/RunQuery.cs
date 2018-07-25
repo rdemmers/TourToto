@@ -8,27 +8,14 @@ namespace TourToto.Connection
 {
     internal class RunQuery : IRunQuery
     {
-        private static readonly IRunQuery instance = null;
-        private SqlConnection conn;
+        private static readonly IRunQuery Instance = null;
+        private readonly SqlConnection conn;
 
-        public static IRunQuery Instance
-        {
-            get
-            {
-                if (instance == null)
-                {
-                    return new RunQuery();
-                }
-                else
-                {
-                    return instance;
-                }
-            }
-        }
+        public static IRunQuery GetInstance => Instance ?? new RunQuery();
 
         public RunQuery()
         {
-            this.conn = SqlConnector.Conn;
+            conn = SqlConnector.Conn;
         }
 
         public bool ExecuteTransaction(ISqlTransactionData transactionData)
@@ -36,9 +23,7 @@ namespace TourToto.Connection
             conn.Open();
 
             SqlCommand command = conn.CreateCommand();
-            SqlTransaction transaction;
-
-            transaction = conn.BeginTransaction();
+            SqlTransaction transaction = conn.BeginTransaction();
 
             command.Connection = conn;
             command.Transaction = transaction;
@@ -113,11 +98,11 @@ namespace TourToto.Connection
                         cmd.Parameters[i].Value = input.GetNextParameterValue();
                     }
                 }
-                SqlParameter IDParameter = new SqlParameter("@ID", SqlDbType.Int)
+                SqlParameter idParameter = new SqlParameter("@ID", SqlDbType.Int)
                 {
                     Direction = ParameterDirection.Output
                 };
-                cmd.Parameters.Add(IDParameter);
+                cmd.Parameters.Add(idParameter);
                 conn.Open();
                 int result = cmd.ExecuteNonQuery();
                 conn.Close();
