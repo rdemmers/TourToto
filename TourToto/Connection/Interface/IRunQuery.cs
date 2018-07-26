@@ -1,6 +1,6 @@
 ﻿using System.Data.SqlClient;
 
-namespace TourToto.Connection
+namespace TourToto.Connection.Interface
 {
     internal interface IRunQuery
     {

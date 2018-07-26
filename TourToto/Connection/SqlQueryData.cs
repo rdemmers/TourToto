@@ -7,7 +7,7 @@ namespace TourToto.Connection
 {
     public class SqlQueryData : ISqlQueryData
     {
-        private CommandType? commandType = CommandType.Text;
+        public CommandType CommandType { get; } = System.Data.CommandType.Text;
 
         public int NrOfParameters { get; set; } = 0;
         public QueryType? QueryType { get; set; } = null;
@@ -17,7 +17,6 @@ namespace TourToto.Connection
         public List<string> SqlParameterValue { get; set; } = new List<string>();
 
         public string SqlQuery { get; set; }
-        public CommandType CommandType => CommandType;
 
         public SqlQueryData(string sqlQuery, QueryType? queryType = Connection.QueryType.NonQuery)
         {

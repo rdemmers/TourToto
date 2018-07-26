@@ -11,5 +11,7 @@ namespace TourToto.Connection
         SqlDataReader Get(ISqlQueryData queryData);
 
         bool Update(ISqlQueryData queryData);
+
+        int GetSingleValue(ISqlQueryData queryData);
     }
 }

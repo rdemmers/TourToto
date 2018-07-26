@@ -1,4 +1,7 @@
-﻿using System.Data.SqlClient;
+﻿using System;
+using System.Data.SqlClient;
+using System.Windows;
+using TourToto.Connection.Interface;
 
 namespace TourToto.Connection
 {
@@ -34,6 +37,13 @@ namespace TourToto.Connection
         {
             int lastWrittenId = (int)(decimal)RunQuery.GetInstance.ExecuteScalar(queryData);
             return lastWrittenId;
+        }
+
+        public int GetSingleValue(ISqlQueryData queryData)
+        {
+            int result = Int32.Parse(RunQuery.GetInstance.ExecuteScalar(queryData).ToString());
+
+            return result;
         }
 
         private static ICrud InstantiateCrud()
