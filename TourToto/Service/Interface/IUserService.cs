@@ -4,16 +4,16 @@ namespace TourToto.Service
 {
     public interface IUserService
     {
+        User LoggedInUser { get; }
+
         int Add(User user);
 
         bool Delete(int userId);
 
         User Get(int userId);
 
-        int GetUserScoreDay(int userId, int day);
-
-        int GetUserScoreTotal(int userId);
-
         bool Update(User user);
+
+        bool Login(string email, string password);
     }
 }
