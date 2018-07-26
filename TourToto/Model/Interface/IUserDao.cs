@@ -9,5 +9,7 @@
         User Get(int id);
 
         bool Update(User user);
+
+        User ValidateCredentials(string email, string password);
     }
 }

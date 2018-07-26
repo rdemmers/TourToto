@@ -295,10 +295,13 @@
       <DependentUpon>UserRegistration.xaml</DependentUpon>
     </Compile>
     <Compile Include="Service\Interface\IUserService.cs" />
+    <Compile Include="Service\ServiceManager.cs" />
     <Compile Include="Service\UserService.cs" />
     <Compile Include="TabControlStyleTemplate.xaml.cs">
       <DependentUpon>TabControlStyleTemplate.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Tools\Interfaces\IPassword.cs" />
+    <Compile Include="Tools\PasswordBase64.cs" />
     <Compile Include="TotoConfig.cs" />
     <Compile Include="Elements\TabItem.cs" />
     <ApplicationDefinition Include="App.xaml">

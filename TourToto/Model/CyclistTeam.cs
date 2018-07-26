@@ -7,13 +7,13 @@ namespace TourToto.Model
     public class CyclistTeam
     {
         private int id;
-        private String name;
-        private String country;
+        private string name;
+        private string country;
         private List<CyclistTeamDao> cyclists;
 
         public int Id { get; }
-        public String Name { get; set; }
-        public String Country { get; set; }
+        public string Name { get; set; }
+        public string Country { get; set; }
         public List<CyclistTeamDao> Cyclists { get; set; }
 
         public CyclistTeam()

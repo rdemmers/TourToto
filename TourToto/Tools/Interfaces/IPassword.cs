@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TourToto.Service;
 
-namespace TourToto.Model
+namespace TourToto.Tools.Interfaces
 {
-    class UserLeaderboard
+    internal interface IPassword
     {
-        private List<UserService> leaderboard;
+        string EncodePassword(string password);
     }
 }

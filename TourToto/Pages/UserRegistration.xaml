@@ -76,6 +76,7 @@
                         FontSize="18"
                         Text="Herhaal wachtwoord:" />
                     <Button
+                        Name="Register"
                         Grid.Row="5"
                         Grid.Column="0"
                         Margin="5,5,5,5"
@@ -83,8 +84,10 @@
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
                         Content="Registreer"
-                        FontSize="16" />
+                        FontSize="16"
+                        PreviewMouseDown="Register_OnMouseDown" />
                     <TextBox
+                        Name="Name"
                         Grid.Row="1"
                         Grid.Column="1"
                         MinWidth="250"
@@ -93,6 +96,7 @@
                         VerticalAlignment="Center"
                         FontSize="18" />
                     <TextBox
+                        Name="Email"
                         Grid.Row="2"
                         Grid.Column="1"
                         MinWidth="250"
@@ -101,6 +105,7 @@
                         VerticalAlignment="Center"
                         FontSize="18" />
                     <TextBox
+                        Name="Password"
                         Grid.Row="3"
                         Grid.Column="1"
                         MinWidth="250"
@@ -109,6 +114,7 @@
                         VerticalAlignment="Center"
                         FontSize="18" />
                     <TextBox
+                        Name="RepeatPassword"
                         Grid.Row="4"
                         Grid.Column="1"
                         MinWidth="250"

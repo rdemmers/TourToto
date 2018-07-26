@@ -541,7 +541,7 @@ namespace TourToto
         }
         //====================================================================================================
         // PASSWORD:
-        // Property for Password element
+        // Property for PasswordBase64 element
         //====================================================================================================
         private string _password;
         public string Password

@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TourToto.Connection;
+using TourToto.Model.DataAccessObject;
 
 namespace TourToto
 {
@@ -23,11 +24,14 @@ namespace TourToto
     public partial class MainWindow : Window
     {
         private TotoConfig Config { get; set; } = new TotoConfig("Default");
+
         public MainWindow()
         {
+            var userDao = new UserDao();
+
             InitializeComponent();
-            
         }
+
         public void WindowLoaded(object sender, RoutedEventArgs e)
         {
         }

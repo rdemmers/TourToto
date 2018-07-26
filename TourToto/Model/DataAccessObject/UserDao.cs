@@ -18,6 +18,8 @@ namespace TourToto.Model.DataAccessObject
 
         public int Add(User user)
         {
+            if (DoesUserExist(user)) return 0;
+
             const string query = "INSERT INTO users " +
                                  "(name,email,password,credentials) " +
                                  "VALUES (@name, @email, @password, @credentials); " +
@@ -103,6 +105,73 @@ namespace TourToto.Model.DataAccessObject
             catch (Exception e)
             {
                 MessageBox.Show("Unable to retrieve user. " + e.Message, "IsUserPassword error type: " +
+                                                                         e.GetType(), MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+                Console.WriteLine(e.StackTrace);
+                Console.WriteLine(e.Message);
+                return new User();
+            }
+        }
+
+        private bool DoesUserExist(User user)
+        {
+            try
+            {
+                var queryData = new SqlQueryData("SELECT COUNT(*) FROM users WHERE [email] = @email", QueryType.Scalar);
+
+                queryData.AddParameter("@email", SqlDbType.VarChar, Convert.ToString(user.Email));
+
+                int foundUsers = crud.GetSingleValue(queryData);
+
+                return (foundUsers > 0) ? true : false;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Unable to register user. " + e.Message, " error type: " +
+                                                                         e.GetType(), MessageBoxButton.OK,
+                MessageBoxImage.Error);
+                Console.WriteLine(e.StackTrace);
+                Console.WriteLine(e.Message);
+                return true;
+            }
+        }
+
+        public User ValidateCredentials(string email, string password)
+        {
+            var queryData = new SqlQueryData("SELECT * FROM users WHERE [email] = @email AND [password] = @password", QueryType.Reader);
+
+            queryData.AddParameter("@email", SqlDbType.VarChar, email);
+            queryData.AddParameter("@password", SqlDbType.VarChar, password);
+
+            var userBuilder = new UserBuilder();
+
+            try
+            {
+                SqlDataReader reader = crud.Get(queryData);
+                if (reader != null)
+                {
+                    while (reader.Read())
+                    {
+                        User user = userBuilder
+                            .SetId(reader.GetInt32(0))
+                            .SetCredentials(reader.GetInt32(1))
+                            .SetName(reader.GetString(2))
+                            .SetEmail(reader.GetString(3))
+                            .Build();
+
+                        reader.Close();
+
+                        return user;
+                    }
+
+                    reader.Close();
+                }
+
+                throw new UnauthorizedAccessException("Username or password incorrect");
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Unable to login. " + e.Message, "IsUserPassword error type: " +
                                                                          e.GetType(), MessageBoxButton.OK,
                     MessageBoxImage.Error);
                 Console.WriteLine(e.StackTrace);

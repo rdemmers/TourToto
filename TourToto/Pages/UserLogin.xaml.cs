@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TourToto.Service;
 
 namespace TourToto.Pages
 {
@@ -23,6 +24,20 @@ namespace TourToto.Pages
         public UserLogin()
         {
             InitializeComponent();
+        }
+
+        private void UIElement_OnPreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            string email = EmailBox.Text;
+            string password = PasswordBox.Text;
+            IUserService service = ServiceManager.GetUserService();
+
+            if (!service.Login(email, password))
+            {
+                MessageBox.Show("Incorrecte login gegevens! Helaas pindakaas");
+            }
+
+            MessageBox.Show("ingelogd als: " + service.LoggedInUser.Name);
         }
     }
 }
