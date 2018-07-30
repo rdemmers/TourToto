@@ -37,7 +37,10 @@ namespace TourToto.Pages
                 MessageBox.Show("Incorrecte login gegevens! Helaas pindakaas");
             }
 
-            MessageBox.Show("ingelogd als: " + service.LoggedInUser.Name);
+            if (service.LoggedInUser != null)
+            {
+                MessageBox.Show("ingelogd als: " + service.LoggedInUser.Name);
+            }
         }
     }
 }

@@ -6,9 +6,11 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:TourToto"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:service="clr-namespace:TourToto.Service"
     Title="MainWindow"
     Width="1600"
     Height="768"
+    DataContext="{Binding RelativeSource={RelativeSource Self}}"
     mc:Ignorable="d">
     <Window.Resources>
         <SolidColorBrush x:Key="TabItem.Selected.Background" Color="#FFFFFF" />
@@ -137,7 +139,7 @@
                 MinHeight="30"
                 Margin="150,0,-150,0"
                 HorizontalAlignment="Left"
-                Header="Thuis">
+                Header="Home">
                 <Grid>
                     <control:HomeControl />
                 </Grid>
@@ -148,7 +150,8 @@
                 MinHeight="30"
                 Margin="150,0,-150,0"
                 HorizontalAlignment="Left"
-                Header="Wielrnnrs1 (admin)">
+                Header="Wielrnnrs1 (admin)"
+                Visibility="{Binding VisibilityAdmin}">
                 <Grid>
                     <control:CyclistRegistrationControl />
                 </Grid>
@@ -159,7 +162,8 @@
                 MinHeight="30"
                 Margin="150,0,-150,0"
                 HorizontalAlignment="Left"
-                Header="Wielrnnrs2 (admin)">
+                Header="Wielrnnrs2 (admin)"
+                Visibility="{Binding VisibilityAdmin}">
                 <control:CyclistDisqualifiedControl />
             </TabItem>
             <TabItem
@@ -168,7 +172,8 @@
                 MinHeight="30"
                 Margin="150,0,-150,0"
                 HorizontalAlignment="Left"
-                Header="Mijn Team1">
+                Header="Mijn Team1"
+                Visibility="{Binding VisibilityLoggedIn}">
                 <control:ChooseTeamControl />
             </TabItem>
             <TabItem
@@ -177,7 +182,8 @@
                 MinHeight="30"
                 Margin="150,0,-150,0"
                 HorizontalAlignment="Left"
-                Header="Mijn Team2">
+                Header="Mijn Team2"
+                Visibility="{Binding VisibilityLoggedIn}">
 
                 <control:ChooseReserveControl />
             </TabItem>
@@ -187,7 +193,8 @@
                 MinHeight="30"
                 Margin="150,0,-150,0"
                 HorizontalAlignment="Left"
-                Header="Resultaten (admin)">
+                Header="Resultaten (admin)"
+                Visibility="{Binding VisibilityAdmin}">
                 <control:RegisterRankingControl />
             </TabItem>
             <TabItem
@@ -196,7 +203,8 @@
                 MinHeight="30"
                 Margin="150,0,-150,0"
                 HorizontalAlignment="Left"
-                Header="Resultaten (user)">
+                Header="Resultaten (user)"
+                Visibility="{Binding VisibilityLoggedIn}">
                 <control:ShowRankingControl />
             </TabItem>
             <TabItem
@@ -207,7 +215,6 @@
                 HorizontalAlignment="Left"
                 Header="Registreer">
                 <control:UserRegistration />
-
             </TabItem>
             <TabItem
                 Width="120"

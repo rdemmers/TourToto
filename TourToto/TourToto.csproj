@@ -322,6 +322,7 @@
       <DependentUpon>UserRegistration.xaml</DependentUpon>
     </Compile>
     <Compile Include="Service\Interface\IUserService.cs" />
+    <Compile Include="Service\PageManager.cs" />
     <Compile Include="Service\ServiceManager.cs" />
     <Compile Include="Service\UserService.cs" />
     <Compile Include="TabControlStyleTemplate.xaml.cs">
@@ -429,11 +430,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Content Include="Database.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Database.mdf" />
     <Content Include="Database_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>Database.mdf</DependentUpon>
     </Content>
     <Resource Include="Resources\speluitleg6.txt" />

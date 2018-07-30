@@ -18,7 +18,11 @@ namespace TourToto.Model.DataAccessObject
 
         public int Add(User user)
         {
-            if (DoesUserExist(user)) return 0;
+            if (DoesUserExist(user))
+            {
+                MessageBox.Show("Gebruiker bestaat al, gebruik a.u.b een ander e-mail adres");
+                return 0;
+            }
 
             const string query = "INSERT INTO users " +
                                  "(name,email,password,credentials) " +
@@ -145,9 +149,9 @@ namespace TourToto.Model.DataAccessObject
 
             var userBuilder = new UserBuilder();
 
+            SqlDataReader reader = crud.Get(queryData);
             try
             {
-                SqlDataReader reader = crud.Get(queryData);
                 if (reader != null)
                 {
                     while (reader.Read())

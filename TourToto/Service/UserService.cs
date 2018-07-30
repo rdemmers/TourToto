@@ -7,6 +7,7 @@ using System.Windows;
 using TourToto.Model;
 using TourToto.Tools;
 using TourToto.Tools.Interfaces;
+using static TourToto.Service.PageManager;
 
 namespace TourToto.Service
 {
@@ -14,7 +15,30 @@ namespace TourToto.Service
     {
         private IUserDao dao;
 
-        public User LoggedInUser { get; private set; } = null;
+        private User loggedInUser = null;
+
+        public User LoggedInUser
+        {
+            get => loggedInUser;
+            set
+            {
+                var window = PageManager.MainWindow;
+                if (value.Credentials == 0)
+                {
+                    window.VisibilityAdmin = Visibility.Hidden;
+                    window.VisibilityLoggedIn = Visibility.Visible;
+                    window.VisibilityLoginRegister = Visibility.Hidden;
+                }
+                else
+                {
+                    window.VisibilityAdmin = Visibility.Visible;
+                    window.VisibilityLoggedIn = Visibility.Visible;
+                    window.VisibilityLoginRegister = Visibility.Visible;
+                }
+
+                loggedInUser = value;
+            }
+        }
 
         public UserService(IUserDao dao)
         {
@@ -53,17 +77,20 @@ namespace TourToto.Service
             try
             {
                 User user = dao.ValidateCredentials(email, password);
-                if (user.Email.Equals(email))
-                {
-                    LoggedInUser = user;
-                    return true;
-                }
 
-                return false;
+                if (!user.Email.Equals(email)) return false;
+
+                LoggedInUser = user;
+                return true;
             }
             catch (UnauthorizedAccessException e)
             {
                 MessageBox.Show(e.Message);
+                return false;
+            }
+            catch (NullReferenceException e)
+            {
+                MessageBox.Show((e.Message));
                 return false;
             }
         }

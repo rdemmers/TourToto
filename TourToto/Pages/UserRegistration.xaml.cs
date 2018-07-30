@@ -35,14 +35,16 @@ namespace TourToto.Pages
                 .Build();
 
             var userservice = ServiceManager.GetUserService();
+
             int id = userservice.Add(user);
 
             if (id == 0)
             {
+                MessageBox.Show("foutje, ergens, user; " + user.ToString());
                 return;
             }
 
-            MessageBox.Show("Gefeliciteerd! De registratie is gelukt, u kunt nu inloggen!");
+            MessageBox.Show("Gefeliciteerd! De registratie is gelukt, u kunt nu inloggen! ID: " + id);
         }
     }
 }
