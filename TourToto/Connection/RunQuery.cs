@@ -21,6 +21,7 @@ namespace TourToto.Connection
 
         public bool ExecuteTransaction(ISqlTransactionData transactionData)
         {
+            ResetConnection();
             conn.Open();
 
             SqlCommand sqlCommand = conn.CreateCommand();
@@ -88,6 +89,7 @@ namespace TourToto.Connection
         // returns number of affected rows
         public int ExecuteNonQuery(ISqlQueryData queryData)
         {
+            ResetConnection();
             using (var command = new SqlCommand(queryData.SqlQuery, conn))
             {
                 command.CommandType = queryData.CommandType;
@@ -115,6 +117,7 @@ namespace TourToto.Connection
         // Function for executing queries that return data of a single field
         public object ExecuteScalar(ISqlQueryData queryData)
         {
+            ResetConnection();
             if (!queryData.IsUsable) return false;
 
             using (var command = new SqlCommand(queryData.SqlQuery, conn))
@@ -139,6 +142,7 @@ namespace TourToto.Connection
         // Function for execution regular SELECT queries that return multiple fields
         public SqlDataReader ExecuteReader(ISqlQueryData queryData)
         {
+            ResetConnection();
             using (var command = new SqlCommand(queryData.SqlQuery, conn))
             {
                 command.CommandType = queryData.CommandType;
@@ -150,11 +154,20 @@ namespace TourToto.Connection
                         command.Parameters[i].Value = queryData.GetNextParameterValue();
                     }
                 }
+
                 conn.Open();
 
                 SqlDataReader reader = command.ExecuteReader(CommandBehavior.CloseConnection);
 
                 return reader;
+            }
+        }
+
+        private void ResetConnection()
+        {
+            if (conn != null && conn.State == ConnectionState.Open)
+            {
+                conn.Close();
             }
         }
     }
