@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using TourToto.Elements;
 
 namespace TourToto
 {
@@ -19,10 +20,8 @@ namespace TourToto
 
         private void PopulateBody(object sender, RoutedEventArgs e)
         {
-            //TabControlStyleTemplate mainTabControl = new TabControlStyleTemplate();
-            //LayoutRoot.Children.Add(mainTabControl);
-            ElementFactory factory = new ElementFactory();
-            ControlProperties properties = new ControlProperties()
+            var factory = new ElementFactory();
+            var properties = new ControlProperties()
             {
                 Name = "mainTabControl"
             };
@@ -33,14 +32,14 @@ namespace TourToto
 
         private void PopulateMainTabControl()
         {
-            TotoConfig Config = new TotoConfig("default");
-            ElementFactory Factory = new ElementFactory();
-            List<string> main_menu_items = Config.GetMainMenuItems();
-            foreach (string menu_item in main_menu_items)
+            var config = new TotoConfig("default");
+            var factory = new ElementFactory();
+            List<string> mainMenuItems = config.GetMainMenuItems();
+            foreach (string menuItem in mainMenuItems)
             {
-                ControlProperties properties = new ControlProperties { Header = menu_item };
-                System.Windows.Controls.TabItem tab_item = Factory.TabItemFactory(properties);
-                mainTabControl.Items.Add(tab_item);
+                var properties = new ControlProperties { Header = menuItem };
+                System.Windows.Controls.TabItem tabItem = factory.TabItemFactory(properties);
+                mainTabControl.Items.Add(tabItem);
             }
         }
     }

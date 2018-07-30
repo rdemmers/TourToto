@@ -3,32 +3,34 @@
 // Author:	Thijs Peterkamp
 // Version:	0.2
 //*******************************
+
 using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
 using System.Windows.Media.Imaging;
 
-namespace TourToto
+namespace TourToto.Elements
 {
-    class ElementFactory
+    internal class ElementFactory
     {
         /// <summary>
         /// ElementFactory class with methods to create <c>System.Windows.Controls</c> elements.
         /// </summary>
-        /// <seealso cref="ControlProperties">
-        private dynamic new_item;
+        /// <seealso cref="ControlProperties" />
+        private dynamic newItem;
+
         private Type type;
-        private ControlProperties properties;
+        private ControlProperties controlProperties;
+
         //====================================================================================================
         public Button ButtonFactory(ControlProperties properties)
         {
             // Store properties in field:
-            this.properties = properties;
+            this.controlProperties = properties;
             // Set type:
             type = typeof(Button);
             // Create new Button:
-            new_item = new Button();
+            newItem = new Button();
 
             // SET PROPERTIES:
             SetAlignmentProperties();
@@ -46,16 +48,17 @@ namespace TourToto
             SetUidProperty();
             SetVisibilityProperty();
 
-            return (Button)new_item;
+            return (Button)newItem;
         }
+
         public CheckBox CheckBoxFactory(ControlProperties properties)
         {
             // Store properties in field:
-            this.properties = properties;
+            this.controlProperties = properties;
             // Set type:
             type = typeof(CheckBox);
             // Create new CheckBox:
-            new_item = new CheckBox();
+            newItem = new CheckBox();
 
             // SET PROPERTIES:
             SetAlignmentProperties();
@@ -72,32 +75,34 @@ namespace TourToto
             SetUidProperty();
             SetVisibilityProperty();
 
-            return (CheckBox)new_item;
+            return (CheckBox)newItem;
         }
+
         public ColumnDefinition ColumnDefinitionFactory(ControlProperties properties)
         {
             // Store properties in field:
-            this.properties = properties;
+            this.controlProperties = properties;
             // Set type:
             type = typeof(ColumnDefinition);
             // Create new ColumnDefinition:
-            new_item = new ColumnDefinition();
+            newItem = new ColumnDefinition();
 
             // SET PROPERTIES:
             SetIsEnabledProperty();
             SetNameProperty();
             SetWidthProperties();
 
-            return (ColumnDefinition)new_item;
+            return (ColumnDefinition)newItem;
         }
+
         public ComboBox ComboBoxFactory(ControlProperties properties)
         {
             // Store properties in field:
-            this.properties = properties;
+            this.controlProperties = properties;
             // Set type:
             type = typeof(ComboBox);
             // Create new ComboBox:
-            new_item = new ComboBox();
+            newItem = new ComboBox();
 
             // SET PROPERTIES:
             SetAlignmentProperties();
@@ -116,40 +121,40 @@ namespace TourToto
             // create ComboBoxItem as placeholder:
             if (properties.HasComboBoxPlaceholder)
             {
-                ComboBoxItem placeholder = new ComboBoxItem
+                var placeholder = new ComboBoxItem
                 {
                     Content = properties.ComboBoxPlaceholder,
                     IsEnabled = false,
                     IsSelected = true
                 };
-                new_item.Items.Add(placeholder);
+                newItem.Items.Add(placeholder);
             }
             // create ComboBoxItems:
-            if (properties.HasComboBoxItems)
+            if (!properties.HasComboBoxItems) return (ComboBox)newItem;
+
+            foreach (string[] item_properties in properties.ComboboxItems)
             {
-                foreach (string[] item_properties in properties.ComboboxItems)
+                ComboBoxItem item = new ComboBoxItem();
+                for (int i = 0; i < item_properties.Length; i++)
                 {
-                    ComboBoxItem item = new ComboBoxItem();
-                    for (int i = 0; i < item_properties.Length; i++)
-                    {
-                        if (i == 0)
-                            item.Content = item_properties[i];
-                        if (i == 1)
-                            item.Uid = item_properties[i];
-                    }
-                    ((ComboBox)new_item).Items.Add(item);
+                    if (i == 0)
+                        item.Content = item_properties[i];
+                    if (i == 1)
+                        item.Uid = item_properties[i];
                 }
+                ((ComboBox)newItem).Items.Add(item);
             }
-            return (ComboBox)new_item;
+            return (ComboBox)newItem;
         }
+
         public ComboBoxItem ComboBoxItemFactory(ControlProperties properties)
         {
             // Store properties in field:
-            this.properties = properties;
+            this.controlProperties = properties;
             // Set type:
             type = typeof(ComboBoxItem);
             // Create new ComboBoxItem:
-            new_item = new ComboBoxItem();
+            newItem = new ComboBoxItem();
 
             // SET PROPERTIES:
             SetAlignmentProperties();
@@ -166,16 +171,17 @@ namespace TourToto
             SetUidProperty();
             SetVisibilityProperty();
 
-            return (ComboBoxItem)new_item;
+            return (ComboBoxItem)newItem;
         }
+
         public DockPanel DockPanelFactory(ControlProperties properties)
         {
             // Store properties in field:
-            this.properties = properties;
+            this.controlProperties = properties;
             // Set type:
             type = typeof(DockPanel);
             // Create new DockPanel:
-            new_item = new DockPanel();
+            newItem = new DockPanel();
 
             // SET PROPERTIES:
             SetAlignmentProperties();
@@ -187,16 +193,17 @@ namespace TourToto
             SetUidProperty();
             SetVisibilityProperty();
 
-            return (DockPanel)new_item;
+            return (DockPanel)newItem;
         }
+
         public Grid GridFactory(ControlProperties properties)
         {
             // Store properties in field:
-            this.properties = properties;
+            this.controlProperties = properties;
             // Set type:
             type = typeof(Grid);
             // Create new Grid:
-            new_item = new Grid();
+            newItem = new Grid();
 
             // SET PROPERTIES:
             SetAlignmentProperties();
@@ -209,16 +216,17 @@ namespace TourToto
             SetUidProperty();
             SetVisibilityProperty();
 
-            return (Grid)new_item;
+            return (Grid)newItem;
         }
+
         public Image ImageFactory(ControlProperties properties)
         {
             // Store properties in field:
-            this.properties = properties;
+            this.controlProperties = properties;
             // Set type:
             type = typeof(Image);
             // Create new Image:
-            new_item = new Image();
+            newItem = new Image();
 
             // SET PROPERTIES:
             SetDimensionProperties();
@@ -230,16 +238,17 @@ namespace TourToto
             SetUidProperty();
             SetVisibilityProperty();
 
-            return (Image)new_item;
+            return (Image)newItem;
         }
+
         public PasswordBox PasswordBoxFactory(ControlProperties properties)
         {
             // Store properties in field:
-            this.properties = properties;
+            this.controlProperties = properties;
             // Set type:
             type = typeof(PasswordBox);
             // Create new PasswordBox:
-            new_item = new PasswordBox();
+            newItem = new PasswordBox();
 
             // SET PROPERTIES:
             SetAlignmentProperties();
@@ -257,32 +266,34 @@ namespace TourToto
             SetUidProperty();
             SetVisibilityProperty();
 
-            return (PasswordBox)new_item;
+            return (PasswordBox)newItem;
         }
+
         public RowDefinition RowDefinitionFactory(ControlProperties properties)
         {
             // Store properties in field:
-            this.properties = properties;
+            this.controlProperties = properties;
             // Set type:
             type = typeof(RowDefinition);
             // Create new RowDefinition:
-            new_item = new RowDefinition();
+            newItem = new RowDefinition();
 
             // SET PROPERTIES:
             SetIsEnabledProperty();
             SetHeightProperties();
             SetNameProperty();
 
-            return (RowDefinition)new_item;
+            return (RowDefinition)newItem;
         }
+
         public ScrollViewer ScrollViewerFactory(ControlProperties properties)
         {
             // Store properties in field:
-            this.properties = properties;
+            this.controlProperties = properties;
             // Set type:
             type = typeof(ScrollViewer);
             // Create new ScrollViewer:
-            new_item = new ScrollViewer();
+            newItem = new ScrollViewer();
 
             // SET PROPERTIES:
             SetAlignmentProperties();
@@ -298,16 +309,17 @@ namespace TourToto
             SetUidProperty();
             SetVisibilityProperty();
 
-            return (ScrollViewer)new_item;
+            return (ScrollViewer)newItem;
         }
+
         public TabControl TabControlFactory(ControlProperties properties)
         {
             // Store properties in field:
-            this.properties = properties;
+            this.controlProperties = properties;
             // Set type:
             type = typeof(TabControl);
             // Create new TabControl:
-            new_item = new TabControl();
+            newItem = new TabControl();
 
             // SET PROPERTIES:
             SetAlignmentProperties();
@@ -322,16 +334,17 @@ namespace TourToto
             SetUidProperty();
             SetVisibilityProperty();
 
-            return (TabControl)new_item;
+            return (TabControl)newItem;
         }
+
         public TabItem TabItemFactory(ControlProperties properties)
         {
             // Store properties in field:
-            this.properties = properties;
+            this.controlProperties = properties;
             // Set type:
             type = typeof(System.Windows.Controls.TabItem);
             // Create new TabItem:
-            new_item = new System.Windows.Controls.TabItem();
+            newItem = new System.Windows.Controls.TabItem();
 
             // SET PROPERTIES:
             SetAlignmentProperties();
@@ -349,16 +362,17 @@ namespace TourToto
             SetUidProperty();
             SetVisibilityProperty();
 
-            return (TabItem)new_item;
+            return (TabItem)newItem;
         }
+
         public TextBlock TextBlockFactory(ControlProperties properties)
         {
             // Store properties in field:
-            this.properties = properties;
+            this.controlProperties = properties;
             // Set type:
             type = typeof(TextBlock);
             // Create new TextBlock:
-            new_item = new TextBlock();
+            newItem = new TextBlock();
 
             // SET PROPERTIES:
             SetAlignmentProperties();
@@ -375,16 +389,17 @@ namespace TourToto
             SetUidProperty();
             SetVisibilityProperty();
 
-            return (TextBlock)new_item;
+            return (TextBlock)newItem;
         }
+
         public TextBox TextBoxFactory(ControlProperties properties)
         {
             // Store properties in field:
-            this.properties = properties;
+            this.controlProperties = properties;
             // Set type:
             type = typeof(TextBox);
             // Create new TextBox:
-            new_item = new TextBox();
+            newItem = new TextBox();
 
             // SET PROPERTIES:
             SetAlignmentProperties();
@@ -401,69 +416,74 @@ namespace TourToto
             SetUidProperty();
             SetVisibilityProperty();
 
-            return (TextBox)new_item;
+            return (TextBox)newItem;
         }
+
         //====================================================================================================
         private void SetAlignmentProperties()
         {
             SetHorizontalAlignmentProperty();
             SetVerticalAlignmentProperty();
         }
+
         private void SetBackgroundProperty()
         {
-            if (properties.HasBackground)
-            {
-                new_item = Convert.ChangeType(new_item, type);
-                new_item.Background = properties.Background;
-            }
+            if (!controlProperties.HasBackground) return;
+
+            newItem = Convert.ChangeType(newItem, type);
+            newItem.Background = controlProperties.Background;
         }
+
         private void SetClickProperty()
         {
-            if(properties.HasClick)
-            {
-                new_item = Convert.ChangeType(new_item, type);
-                new_item.Click += properties.Click;
-            }
+            if (!controlProperties.HasClick) return;
+
+            newItem = Convert.ChangeType(newItem, type);
+            newItem.Click += controlProperties.Click;
         }
+
         private void SetContentProperty()
         {
-            if(properties.HasContent)
-            {
-                new_item = Convert.ChangeType(new_item, type);
-                new_item.Content = properties.Content;
-            }
+            if (!controlProperties.HasContent) return;
+
+            newItem = Convert.ChangeType(newItem, type);
+            newItem.Content = controlProperties.Content;
         }
+
         private void SetContentAlignmentProperties()
         {
             SetHorizontalContentAlignmentProperty();
             SetVerticalContentAlignmentProperty();
         }
+
         private void SetDimensionProperties()
         {
             SetHeightProperties();
             SetWidthProperties();
         }
+
         private void SetFontProperties()
         {
             SetFontSizeProperty();
             SetFontWeightProperty();
         }
+
         private void SetFontSizeProperty()
         {
-            if (properties.HasFontSize)
-            {
-                new_item = Convert.ChangeType(new_item, type);
-                new_item.FontSize = properties.FontSize;
-            }
+            if (!controlProperties.HasFontSize) return;
+
+            newItem = Convert.ChangeType(newItem, type);
+            newItem.FontSize = controlProperties.FontSize;
         }
+
         private void SetFontWeightProperty()
         {
-            if (properties.HasFontWeight)
-            {
-                new_item = Convert.ChangeType(new_item, type);
-                new_item.FontWeight = properties.FontWeight;
-            }
+            if (!controlProperties.HasFontWeight) return;
+
+            newItem = Convert.ChangeType(newItem, type);
+            newItem.FontWeight = controlProperties.FontWeight;
         }
+
         private void SetGridProperties()
         {
             SetGridColumnProperty();
@@ -471,207 +491,221 @@ namespace TourToto
             SetGridRowProperty();
             SetGridRowSpanProperty();
         }
+
         private void SetGridColumnProperty()
         {
-            if (properties.HasColumn)
-            {
-                new_item = Convert.ChangeType(new_item, type);
-                Grid.SetColumn(new_item, properties.Column);
-            }
+            if (!controlProperties.HasColumn) return;
+
+            newItem = Convert.ChangeType(newItem, type);
+            Grid.SetColumn(newItem, controlProperties.Column);
         }
+
         private void SetGridColumnSpanProperty()
         {
-            if (properties.HasColumnSpan)
-            {
-                new_item = Convert.ChangeType(new_item, type);
-                Grid.SetColumnSpan(new_item, properties.ColumnSpan);
-            }
+            if (!controlProperties.HasColumnSpan) return;
+
+            newItem = Convert.ChangeType(newItem, type);
+            Grid.SetColumnSpan(newItem, controlProperties.ColumnSpan);
         }
+
         private void SetGridRowProperty()
         {
-            if (properties.HasRow)
-            {
-                new_item = Convert.ChangeType(new_item, type);
-                Grid.SetRow(new_item, properties.Row);
-            }
+            if (!controlProperties.HasRow) return;
+
+            newItem = Convert.ChangeType(newItem, type);
+            Grid.SetRow(newItem, controlProperties.Row);
         }
+
         private void SetGridRowSpanProperty()
         {
-            if (properties.HasRowSpan)
+            if (controlProperties.HasRowSpan)
             {
-                new_item = Convert.ChangeType(new_item, type);
-                Grid.SetRowSpan(new_item, properties.RowSpan);
+                newItem = Convert.ChangeType(newItem, type);
+                Grid.SetRowSpan(newItem, controlProperties.RowSpan);
             }
         }
+
         private void SetHeaderProperty()
         {
-            if (properties.HasHeader)
-            {
-                new_item = Convert.ChangeType(new_item, type);
-                new_item.Header = properties.Header;
-            }
+            if (!controlProperties.HasHeader) return;
+
+            newItem = Convert.ChangeType(newItem, type);
+            newItem.Header = controlProperties.Header;
         }
+
         private void SetHeightProperties()
         {
             SetHeightProperty();
             SetMinHeightProperty();
             SetMaxHeightProperty();
         }
+
         private void SetHeightProperty()
         {
-            if (properties.HasHeight)
+            if (!controlProperties.HasHeight) return;
+
+            newItem = Convert.ChangeType(newItem, type);
+            if (controlProperties.Height == "Auto" || controlProperties.Height == "auto")
             {
-                new_item = Convert.ChangeType(new_item, type);
-                if (properties.Height == "Auto" || properties.Height == "auto")
-                {
-                    new_item.Height = Double.NaN;
-                }
-                else if (int.TryParse(properties.Height, out int height) && height != 0)
-                {
-                    new_item.Height = (double)height;
-                }
+                newItem.Height = Double.NaN;
+            }
+            else if (int.TryParse(controlProperties.Height, out int height) && height != 0)
+            {
+                newItem.Height = (double)height;
             }
         }
+
         private void SetHorizontalAlignmentProperty()
         {
-            if (properties.HasHorizontalAlignment)
-            {
-                new_item = Convert.ChangeType(new_item, type);
-                new_item.HorizontalAlignment = properties.HorizontalAlignment;
-            }
+            if (!controlProperties.HasHorizontalAlignment) return;
+
+            newItem = Convert.ChangeType(newItem, type);
+            newItem.HorizontalAlignment = controlProperties.HorizontalAlignment;
         }
+
         private void SetHorizontalContentAlignmentProperty()
         {
-            if (properties.HasHorizontalContentAlignment)
-            {
-                new_item = Convert.ChangeType(new_item, type);
-                new_item.HorizontalContentAlignment = properties.HorizontalContentAlignment;
-            }
+            if (!controlProperties.HasHorizontalContentAlignment) return;
+
+            newItem = Convert.ChangeType(newItem, type);
+            newItem.HorizontalContentAlignment = controlProperties.HorizontalContentAlignment;
         }
+
         private void SetHorizontalScrollBarVisibilityProperty()
         {
-            if (properties.HasHorizontalScrollBarVisibility)
-            {
-                new_item = Convert.ChangeType(new_item, type);
-                new_item.HorizontalScrollBarVisibility = properties.HorizontalScrollBarVisibility;
-            }
+            if (!controlProperties.HasHorizontalScrollBarVisibility) return;
+
+            newItem = Convert.ChangeType(newItem, type);
+            newItem.HorizontalScrollBarVisibility = controlProperties.HorizontalScrollBarVisibility;
         }
+
         private void SetIsCheckedProperty()
         {
-            if (properties.HasIsChecked)
-            {
-                new_item = Convert.ChangeType(new_item, type);
-                new_item.IsChecked = properties.IsChecked;
-            }
+            if (!controlProperties.HasIsChecked) return;
+
+            newItem = Convert.ChangeType(newItem, type);
+            newItem.IsChecked = controlProperties.IsChecked;
         }
+
         private void SetIsEnabledProperty()
         {
-            if (properties.HasIsEnabled)
-            {
-                new_item = Convert.ChangeType(new_item, type);
-                new_item.IsEnabled = properties.IsEnabled;
-            }
+            if (!controlProperties.HasIsEnabled) return;
+
+            newItem = Convert.ChangeType(newItem, type);
+            newItem.IsEnabled = controlProperties.IsEnabled;
         }
+
         private void SetIsSelectedProperty()
         {
-            if (properties.HasIsSelected)
-            {
-                new_item = Convert.ChangeType(new_item, type);
-                new_item.IsSelected = properties.IsSelected;
-            }
+            if (!controlProperties.HasIsSelected) return;
+
+            newItem = Convert.ChangeType(newItem, type);
+            newItem.IsSelected = controlProperties.IsSelected;
         }
+
         private void SetMarginProperty()
         {
-            if (properties.HasMargin)
-            {
-                new_item = Convert.ChangeType(new_item, type);
-                ThicknessConverter tc = new ThicknessConverter();
-                new_item.Margin = (Thickness)tc.ConvertFromString(properties.Margin);
-            }
+            if (!controlProperties.HasMargin) return;
+
+            newItem = Convert.ChangeType(newItem, type);
+            ThicknessConverter tc = new ThicknessConverter();
+            newItem.Margin = (Thickness)tc.ConvertFromString(controlProperties.Margin);
         }
+
         private void SetMaxHeightProperty()
         {
-            if (properties.HasMaxHeight)
+            if (controlProperties.HasMaxHeight)
             {
-                new_item = Convert.ChangeType(new_item, type);
-                new_item.MaxHeight = (double)properties.MaxHeight;
+                newItem = Convert.ChangeType(newItem, type);
+                newItem.MaxHeight = (double)controlProperties.MaxHeight;
             }
         }
+
         private void SetMaxWidthProperty()
         {
-            if (properties.HasMaxWidth)
+            if (controlProperties.HasMaxWidth)
             {
-                new_item = Convert.ChangeType(new_item, type);
-                new_item.MaxWidth = (double)properties.MaxWidth;
+                newItem = Convert.ChangeType(newItem, type);
+                newItem.MaxWidth = (double)controlProperties.MaxWidth;
             }
         }
+
         private void SetMinHeightProperty()
         {
-            if (properties.HasMinHeight)
+            if (controlProperties.HasMinHeight)
             {
-                new_item = Convert.ChangeType(new_item, type);
-                new_item.MinHeight = (double)properties.MinHeight;
+                newItem = Convert.ChangeType(newItem, type);
+                newItem.MinHeight = (double)controlProperties.MinHeight;
             }
         }
+
         private void SetMinWidthProperty()
         {
-            if (properties.HasMinWidth)
+            if (controlProperties.HasMinWidth)
             {
-                new_item = Convert.ChangeType(new_item, type);
-                new_item.MinWidth = (double)properties.MinWidth;
+                newItem = Convert.ChangeType(newItem, type);
+                newItem.MinWidth = (double)controlProperties.MinWidth;
             }
         }
+
         private void SetNameProperty()
         {
-            if (properties.HasName)
+            if (controlProperties.HasName)
             {
-                new_item = Convert.ChangeType(new_item, type);
-                new_item.Name = properties.Name;
+                newItem = Convert.ChangeType(newItem, type);
+                newItem.Name = controlProperties.Name;
             }
         }
+
         private void SetPaddingProperty()
         {
-            if (properties.HasPadding)
+            if (controlProperties.HasPadding)
             {
-                new_item = Convert.ChangeType(new_item, type);
+                newItem = Convert.ChangeType(newItem, type);
                 ThicknessConverter tc = new ThicknessConverter();
-                new_item.Padding = (Thickness)tc.ConvertFromString(properties.Padding);
+                newItem.Padding = (Thickness)tc.ConvertFromString(controlProperties.Padding);
             }
         }
+
         private void SetPasswordProperties()
         {
             SetPasswordProperty();
             SetPasswordCharProperty();
         }
+
         private void SetPasswordProperty()
         {
-            if (properties.HasPassword)
+            if (controlProperties.HasPassword)
             {
-                new_item = Convert.ChangeType(new_item, type);
-                new_item.Password = properties.Password;
+                newItem = Convert.ChangeType(newItem, type);
+                newItem.Password = controlProperties.Password;
             }
         }
+
         private void SetPasswordCharProperty()
         {
-            if (properties.HasPasswordChar)
+            if (controlProperties.HasPasswordChar)
             {
-                new_item = Convert.ChangeType(new_item, type);
-                new_item.PasswordChar = properties.PasswordChar;
+                newItem = Convert.ChangeType(newItem, type);
+                newItem.PasswordChar = controlProperties.PasswordChar;
             }
         }
+
         private void SetScrollBarVisibilityProperties()
         {
             SetHorizontalScrollBarVisibilityProperty();
             SetVerticalScrollBarVisibilityProperty();
         }
+
         private void SetSourceProperty()
         {
-            if (properties.HasSource)
+            if (controlProperties.HasSource)
             {
-                new_item = Convert.ChangeType(new_item, type);
-                new_item.Source = new BitmapImage(new Uri(properties.Source, UriKind.Relative));
+                newItem = Convert.ChangeType(newItem, type);
+                newItem.Source = new BitmapImage(new Uri(controlProperties.Source, UriKind.Relative));
             }
         }
+
         private void SetTextProperties()
         {
             SetTextProperty();
@@ -679,99 +713,110 @@ namespace TourToto
             SetTextDecorationsProperty();
             SetTextWrappingProperty();
         }
+
         private void SetTextProperty()
         {
-            if (properties.HasText)
+            if (controlProperties.HasText)
             {
-                new_item = Convert.ChangeType(new_item, type);
-                new_item.Text = properties.Text;
+                newItem = Convert.ChangeType(newItem, type);
+                newItem.Text = controlProperties.Text;
             }
         }
+
         private void SetTextAlignmentProperty()
         {
-            if (properties.HasTextAlignment)
+            if (controlProperties.HasTextAlignment)
             {
-                new_item = Convert.ChangeType(new_item, type);
-                new_item.TextAlignment = properties.TextAlignment;
+                newItem = Convert.ChangeType(newItem, type);
+                newItem.TextAlignment = controlProperties.TextAlignment;
             }
         }
+
         private void SetTextDecorationsProperty()
         {
-            if (properties.HasTextDecorations)
+            if (controlProperties.HasTextDecorations)
             {
-                new_item = Convert.ChangeType(new_item, type);
-                new_item.TextDecorations = properties.TextDecorations;
+                newItem = Convert.ChangeType(newItem, type);
+                newItem.TextDecorations = controlProperties.TextDecorations;
             }
         }
+
         private void SetTextWrappingProperty()
         {
-            if (properties.HasTextWrapping)
+            if (controlProperties.HasTextWrapping)
             {
-                new_item = Convert.ChangeType(new_item, type);
-                new_item.TextWrapping = properties.TextWrapping;
+                newItem = Convert.ChangeType(newItem, type);
+                newItem.TextWrapping = controlProperties.TextWrapping;
             }
         }
+
         private void SetUidProperty()
         {
-            if (properties.HasUid)
+            if (controlProperties.HasUid)
             {
-                new_item = Convert.ChangeType(new_item, type);
-                new_item.Uid = properties.Uid;
+                newItem = Convert.ChangeType(newItem, type);
+                newItem.Uid = controlProperties.Uid;
             }
         }
+
         private void SetVerticalAlignmentProperty()
         {
-            if (properties.HasVerticalAligntment)
+            if (controlProperties.HasVerticalAligntment)
             {
-                new_item = Convert.ChangeType(new_item, type);
-                new_item.VerticalAlignment = properties.VerticalAlignment;
+                newItem = Convert.ChangeType(newItem, type);
+                newItem.VerticalAlignment = controlProperties.VerticalAlignment;
             }
         }
+
         private void SetVerticalContentAlignmentProperty()
         {
-            if (properties.HasVerticalContentAlignment)
+            if (controlProperties.HasVerticalContentAlignment)
             {
-                new_item = Convert.ChangeType(new_item, type);
-                new_item.VerticalContentAlignment = properties.VerticalContentAlignment;
+                newItem = Convert.ChangeType(newItem, type);
+                newItem.VerticalContentAlignment = controlProperties.VerticalContentAlignment;
             }
         }
+
         private void SetVerticalScrollBarVisibilityProperty()
         {
-            if (properties.HasVerticalScrollBarVisibility)
+            if (controlProperties.HasVerticalScrollBarVisibility)
             {
-                new_item = Convert.ChangeType(new_item, type);
-                new_item.VerticalScrollBarVisibility = properties.VerticalScrollBarVisibility;
+                newItem = Convert.ChangeType(newItem, type);
+                newItem.VerticalScrollBarVisibility = controlProperties.VerticalScrollBarVisibility;
             }
         }
+
         private void SetVisibilityProperty()
         {
-            if (properties.HasIsVisible)
+            if (controlProperties.HasIsVisible)
             {
-                new_item = Convert.ChangeType(new_item, type);
-                if (properties.IsVisible)
-                    new_item.Visibility = Visibility.Visible;
+                newItem = Convert.ChangeType(newItem, type);
+                if (controlProperties.IsVisible)
+                    newItem.Visibility = Visibility.Visible;
                 else
-                    new_item.Visibility = Visibility.Hidden;
+                    newItem.Visibility = Visibility.Hidden;
             }
         }
+
         private void SetWidthProperties()
         {
             SetWidthProperty();
             SetMinWidthProperty();
             SetMaxWidthProperty();
         }
+
         private void SetWidthProperty()
         {
-            if (properties.HasWidth)
+            if (controlProperties.HasWidth)
             {
-                new_item = Convert.ChangeType(new_item, type);
-                if (properties.Width == "Auto" || properties.Width == "auto")
+                newItem = Convert.ChangeType(newItem, type);
+                if (controlProperties.Width == "Auto" || controlProperties.Width == "auto")
                 {
-                    new_item.Width = Double.NaN;
+                    newItem.Width = Double.NaN;
                 }
-                else if (int.TryParse(properties.Width, out int width) && width != 0)
+                else if (int.TryParse(controlProperties.Width, out int width) && width != 0)
                 {
-                    new_item.Width = (double)width;
+                    newItem.Width = (double)width;
                 }
             }
         }

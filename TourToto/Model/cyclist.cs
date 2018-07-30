@@ -18,8 +18,8 @@ namespace TourToto.Model
 
         public Cyclist(int id, string name)
         {
-            this.Id = id;
-            this.Name = name;
+            Id = id;
+            Name = name;
         }
     }
 }

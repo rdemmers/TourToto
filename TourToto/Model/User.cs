@@ -4,21 +4,13 @@ namespace TourToto.Model
 {
     public class User
     {
-        private int id;
-        private int credentials;
-        private String name;
-        private String email;
-        private String password;
-        private int totalScore;
-        private int dayScore;
-
-        public int Id { get => id; set => id = value; }
-        public int Credentials { get => credentials; set => credentials = value; }
-        public string Name { get => name; set => name = value; }
-        public string Email { get => email; set => email = value; }
-        public string Password { get => password; set => password = value; }
-        public int TotalScore { get => totalScore; set => totalScore = value; }
-        public int DayScore { get => dayScore; set => dayScore = value; }
+        public int Id { get; set; }
+        public int Credentials { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public int TotalScore { get; set; }
+        public int DayScore { get; set; }
 
         public User()
         {
@@ -26,13 +18,13 @@ namespace TourToto.Model
 
         public User(int id, int credentials, string name, string email, string password, int totalScore, int dayScore)
         {
-            this.Id = id;
-            this.Credentials = credentials;
-            this.Name = name;
-            this.Email = email;
-            this.Password = password;
-            this.TotalScore = totalScore;
-            this.DayScore = dayScore;
+            Id = id;
+            Credentials = credentials;
+            Name = name;
+            Email = email;
+            Password = password;
+            TotalScore = totalScore;
+            DayScore = dayScore;
         }
 
         public override string ToString()
