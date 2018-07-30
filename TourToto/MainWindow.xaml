@@ -213,7 +213,8 @@
                 MinHeight="30"
                 Margin="150,0,-150,0"
                 HorizontalAlignment="Left"
-                Header="Registreer">
+                Header="Registreer"
+                Visibility="{Binding VisibilityLoginRegister}">
                 <control:UserRegistration />
             </TabItem>
             <TabItem
@@ -222,7 +223,8 @@
                 MinHeight="30"
                 Margin="150,0,-150,0"
                 HorizontalAlignment="Left"
-                Header="Inloggen">
+                Header="Inloggen"
+                Visibility="{Binding VisibilityLoginRegister}">
                 <control:UserLogin />
             </TabItem>
         </TabControl>

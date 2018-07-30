@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using TourToto.Model;
 using TourToto.Tools;
+using TourToto.Service;
 using TourToto.Tools.Interfaces;
-using static TourToto.Service.PageManager;
 
 namespace TourToto.Service
 {
@@ -16,6 +16,11 @@ namespace TourToto.Service
         private IUserDao dao;
 
         private User loggedInUser = null;
+
+        public UserService(IUserDao dao)
+        {
+            this.dao = dao;
+        }
 
         public User LoggedInUser
         {
@@ -40,11 +45,6 @@ namespace TourToto.Service
             }
         }
 
-        public UserService(IUserDao dao)
-        {
-            this.dao = dao;
-        }
-
         public int Add(User user)
         {
             IPassword password = new PasswordBase64();
@@ -54,19 +54,14 @@ namespace TourToto.Service
             return lastWrittenId;
         }
 
-        public User Get(int userId)
-        {
-            return dao.Get(userId);
-        }
-
-        public bool Update(User user)
-        {
-            return dao.Update(user);
-        }
-
         public bool Delete(int userId)
         {
             return dao.Delete(userId);
+        }
+
+        public User Get(int userId)
+        {
+            return dao.Get(userId);
         }
 
         public bool Login(string email, string password)
@@ -93,6 +88,11 @@ namespace TourToto.Service
                 MessageBox.Show((e.Message));
                 return false;
             }
+        }
+
+        public bool Update(User user)
+        {
+            return dao.Update(user);
         }
     }
 }

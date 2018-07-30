@@ -10,9 +10,6 @@ namespace TourToto
     /// </summary>
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
-        private TotoConfig Config { get; set; } = new TotoConfig("Default");
-        public string HomeButton => "Thuisknopje";
-
         private Visibility visibilityAdmin = Visibility.Hidden;
         private Visibility visibilityLoggedIn = Visibility.Hidden;
         private Visibility visibilityLoginRegister = Visibility.Visible;
@@ -23,16 +20,9 @@ namespace TourToto
             InitializeComponent();
         }
 
-        public void WindowLoaded(object sender, RoutedEventArgs e)
-        {
-        }
-
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        public string HomeButton => "Thuisknopje";
 
         public Visibility VisibilityAdmin
         {
@@ -62,9 +52,20 @@ namespace TourToto
 
             set
             {
-                visibilityLoggedIn = value;
+                visibilityLoginRegister = value;
                 OnPropertyChanged();
             }
+        }
+
+        private TotoConfig Config { get; set; } = new TotoConfig("Default");
+
+        public void WindowLoaded(object sender, RoutedEventArgs e)
+        {
+        }
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

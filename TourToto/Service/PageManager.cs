@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TourToto.Service
 {
-    internal static class PageManager
+    public static class PageManager
     {
         public static MainWindow MainWindow { get; set; }
     }
