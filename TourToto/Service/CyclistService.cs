@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -27,7 +28,6 @@ namespace TourToto.Service
             var team = new CyclistTeam(0, name, country);
             try
             {
-                MessageBox.Show("service: " + team.Name + team.Country);
                 var id = cyclistTeamDao.Add(team);
 
                 if (id > 0) return true;
@@ -39,6 +39,11 @@ namespace TourToto.Service
                 Debug.WriteLine(e.Message);
                 return false;
             }
+        }
+
+        public List<CyclistTeam> GetAllTeams()
+        {
+            return cyclistTeamDao.GetAll();
         }
     }
 }

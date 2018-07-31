@@ -31,12 +31,11 @@ namespace TourToto.Pages.CyclistRegistration
         {
             var country = CountryBox.Text;
             var name = NameBox.Text;
-            MessageBox.Show(country + name);
             try
             {
                 ICyclistService cyclistService = ServiceManager.GetCyclistService();
                 cyclistService.AddTeam(name, country);
-                MessageBox.Show("Team toegevoegd!");
+                ServiceManager.GetCyclistService().GetAllTeams();
             }
             catch (Exception ex)
             {

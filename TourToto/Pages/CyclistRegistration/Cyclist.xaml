@@ -31,179 +31,70 @@
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="406*" />
+                            <ColumnDefinition Width="97" />
+                            <ColumnDefinition Width="97*" />
                         </Grid.ColumnDefinitions>
                         <TextBlock
                             Grid.Row="0"
-                            Grid.Column="0"
-                            Margin="5,5,5,5"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Text="Land" />
-                        <TextBlock
-                            Grid.Row="0"
                             Grid.Column="1"
-                            Margin="5,5,5,5"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Text="Naam" />
-                        <TextBlock
-                            Grid.Row="0"
-                            Grid.Column="2"
-                            Margin="5,5,5,5"
+                            Margin="344,-29,0,71"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
                             Text="Team" />
                         <ScrollViewer
-                            Grid.Row="1"
+                            Grid.RowSpan="2"
                             Grid.Column="0"
-                            Grid.ColumnSpan="4"
-                            VerticalScrollBarVisibility="Auto">
-                            <StackPanel>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="Auto" />
-                                    </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto" />
-                                        <RowDefinition Height="Auto" />
-                                    </Grid.RowDefinitions>
-                                    <ComboBox
-                                        Grid.Row="0"
-                                        Grid.Column="0"
-                                        MinWidth="150"
-                                        Margin="5,5,5,5">
-                                        <ComboBoxItem Content="België" />
-                                        <ComboBoxItem Content="Duitsland" />
-                                        <ComboBoxItem Content="Frankrijk" />
-                                        <ComboBoxItem Content="Italië" />
-                                        <ComboBoxItem Content="Nederland" IsSelected="True" />
-                                        <ComboBoxItem Content="Spanje" />
-                                    </ComboBox>
-                                    <TextBox
-                                        Grid.Row="0"
-                                        Grid.Column="1"
-                                        MinWidth="300"
-                                        MaxWidth="1000"
-                                        Margin="5,5,5,5"
-                                        Text="Huppeldepup" />
-                                    <ComboBox
-                                        Grid.Row="0"
-                                        Grid.Column="2"
-                                        MinWidth="150"
-                                        Margin="5,5,5,5">
-                                        <ComboBoxItem Content="Jumbo" IsSelected="True" />
-                                        <ComboBoxItem Content="Werpers" />
-                                    </ComboBox>
-                                    <Button
-                                        Grid.Row="0"
-                                        Grid.Column="3"
-                                        Width="80"
-                                        Margin="5,5,5,5"
-                                        Content="Verwijderen" />
-                                    <ComboBox
-                                        Grid.Row="1"
-                                        Grid.Column="0"
-                                        MinWidth="150"
-                                        Margin="5,5,5,5">
-                                        <ComboBoxItem Content="België" IsSelected="True" />
-                                        <ComboBoxItem Content="Duitsland" />
-                                        <ComboBoxItem Content="Frankrijk" />
-                                        <ComboBoxItem Content="Italië" />
-                                        <ComboBoxItem Content="Nederland" />
-                                        <ComboBoxItem Content="Spanje" />
-                                    </ComboBox>
-                                    <TextBox
-                                        Grid.Row="1"
-                                        Grid.Column="1"
-                                        MinWidth="300"
-                                        MaxWidth="1000"
-                                        Margin="5,5,5,5"
-                                        Text="Legstrong" />
-                                    <ComboBox
-                                        Grid.Row="1"
-                                        Grid.Column="2"
-                                        MinWidth="150"
-                                        Margin="5,5,5,5">
-                                        <ComboBoxItem Content="Jumbo" />
-                                        <ComboBoxItem Content="Werpers" IsSelected="True" />
-                                    </ComboBox>
-                                    <Button
-                                        Grid.Row="1"
-                                        Grid.Column="3"
-                                        Width="80"
-                                        Margin="5,5,5,5"
-                                        Content="Verwijderen" />
-                                </Grid>
-                            </StackPanel>
-                        </ScrollViewer>
+                            Grid.ColumnSpan="9"
+                            Margin="0,41,0,0"
+                            VerticalScrollBarVisibility="Auto" />
                         <ComboBox
-                            Grid.Row="2"
-                            Grid.Column="0"
-                            MinWidth="150"
-                            Margin="5,5,5,5">
-                            <ComboBoxItem
-                                Content="Selecteer..."
-                                IsEnabled="False"
-                                IsSelected="True" />
-                            <ComboBoxItem Content="België" />
-                            <ComboBoxItem Content="Duitsland" />
-                            <ComboBoxItem Content="Frankrijk" />
-                            <ComboBoxItem Content="Italië" />
-                            <ComboBoxItem Content="Nederland" />
-                            <ComboBoxItem Content="Spanje" />
-                        </ComboBox>
-                        <TextBox
-                            Grid.Row="2"
+                            x:Name="TeamsComboBox"
                             Grid.Column="1"
-                            MinWidth="300"
-                            MaxWidth="1000"
-                            Margin="5,5,5,5" />
-                        <ComboBox
-                            Grid.Row="2"
-                            Grid.Column="2"
+                            Grid.ColumnSpan="3"
                             MinWidth="150"
-                            Margin="5,5,5,5">
-                            <ComboBoxItem
-                                Content="Kies..."
-                                IsEnabled="False"
-                                IsSelected="True" />
-                            <ComboBoxItem Content="Jumbo" />
-                            <ComboBoxItem Content="Werpers" />
-                        </ComboBox>
+                            Margin="343,-8,10,41" />
                         <Button
-                            Grid.Row="2"
+                            Name="SubmitCyclist"
+                            Grid.Row="3"
                             Grid.Column="3"
                             Width="80"
-                            Margin="5,5,5,5"
-                            Content="Toevoegen" />
-                        <Button
-                            Grid.Row="3"
-                            Grid.Column="0"
-                            Grid.ColumnSpan="4"
-                            Width="120"
-                            Margin="5,5,5,5"
-                            Padding="10,5,10,5"
+                            Margin="7,32,10,-54"
+                            Content="Toevoegen"
+                            PreviewMouseLeftButtonDown="SubmitCyclist_PreviewMouseLeftButtonDown" />
+                        <ListBox
+                            Name="CyclistListBox"
+                            Grid.RowSpan="4"
+                            Grid.Column="1"
+                            Width="330"
+                            Height="144"
+                            Margin="0,-32,0,-54"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top" />
+                        <TextBlock
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Width="38"
+                            Margin="344,22,0,20"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
-                            Content="Bewaar"
-                            FontSize="12" />
-                        <Button
-                            Grid.Row="3"
-                            Grid.Column="0"
-                            Grid.ColumnSpan="4"
-                            Width="120"
-                            Margin="135,5,5,5"
-                            Padding="10,5,10,5"
+                            RenderTransformOrigin="0.175,-0.646"
+                            Text="Fietser" />
+                    </Grid>
+                    <Grid Grid.Row="2" Margin="357,0,0,59">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="215*" />
+                            <ColumnDefinition Width="28*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBox
+                            Name="CyclistName"
+                            Grid.ColumnSpan="2"
+                            Width="233"
+                            Height="28"
+                            Margin="-12,-16,0,0"
                             HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Content="Deelenemes klaar"
-                            FontSize="12" />
+                            VerticalAlignment="Top"
+                            TextWrapping="Wrap" />
                     </Grid>
                 </Grid>
             </Grid>

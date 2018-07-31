@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows;
@@ -99,6 +100,40 @@ namespace TourToto.Model.DataAccessObject
                 Console.WriteLine(e.StackTrace);
                 Console.WriteLine(e.Message);
                 return new CyclistTeam();
+            }
+        }
+
+        public List<CyclistTeam> GetAll()
+        {
+            var queryData = new SqlQueryData("SELECT * FROM cyclist_team", QueryType.Reader);
+            var builder = new CyclistTeamBuilder();
+
+            var allTeams = new List<CyclistTeam>();
+            try
+            {
+                SqlDataReader reader = crud.Get(queryData);
+
+                while (reader.Read())
+                {
+                    CyclistTeam team = builder
+                        .SetId(reader.GetInt32(0))
+                        .SetName(reader.GetString(1))
+                        .SetCountry(reader.GetString(2))
+                        .Build();
+
+                    allTeams.Add(team);
+                }
+
+                reader.Close();
+                return allTeams;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Unable to retrieve team. " + e.Message, "Cyclist team error type: " +
+                    e.GetType(), MessageBoxButton.OK, MessageBoxImage.Error);
+                Console.WriteLine(e.StackTrace);
+                Console.WriteLine(e.Message);
+                return allTeams;
             }
         }
     }

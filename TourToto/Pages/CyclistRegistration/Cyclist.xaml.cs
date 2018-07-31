@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TourToto.Model;
+using TourToto.Service;
 
 namespace TourToto.Pages.CyclistRegistration
 {
@@ -23,6 +26,19 @@ namespace TourToto.Pages.CyclistRegistration
         public Cyclist()
         {
             InitializeComponent();
+            InitializeComboBox();
+        }
+
+        private void InitializeComboBox()
+        {
+            TeamsComboBox.ItemsSource = ServiceManager.GetCyclistService().GetAllTeams();
+            TeamsComboBox.DisplayMemberPath = "Name";
+        }
+
+        private void SubmitCyclist_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            CyclistTeam team = (CyclistTeam)TeamsComboBox.SelectedItem;
+            string cyclist = CyclistName.Text;
         }
     }
 }
