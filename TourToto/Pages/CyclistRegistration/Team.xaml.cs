@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TourToto.Service;
+using TourToto.Service.Interface;
 
 namespace TourToto.Pages.CyclistRegistration
 {
@@ -23,6 +25,23 @@ namespace TourToto.Pages.CyclistRegistration
         public Team()
         {
             InitializeComponent();
+        }
+
+        private void Button_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            var country = CountryBox.Text;
+            var name = NameBox.Text;
+            MessageBox.Show(country + name);
+            try
+            {
+                ICyclistService cyclistService = ServiceManager.GetCyclistService();
+                cyclistService.AddTeam(name, country);
+                MessageBox.Show("Team toegevoegd!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

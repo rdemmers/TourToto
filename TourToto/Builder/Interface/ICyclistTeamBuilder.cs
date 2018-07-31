@@ -10,8 +10,6 @@ namespace TourToto.Builder.Interface
 
         CyclistTeamBuilder SetCountry(string country);
 
-        CyclistTeamBuilder SetCyclists(List<CyclistTeamDao> cyclists);
-
         CyclistTeamBuilder SetId(int id);
 
         CyclistTeamBuilder SetName(string name);

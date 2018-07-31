@@ -11,7 +11,6 @@ namespace TourToto.Builder
         private int id;
         private String name;
         private String country;
-        private List<CyclistTeamDao> cyclists;
 
         public CyclistTeamBuilder SetId(int id)
         {
@@ -31,15 +30,9 @@ namespace TourToto.Builder
             return this;
         }
 
-        public CyclistTeamBuilder SetCyclists(List<CyclistTeamDao> cyclists)
-        {
-            this.cyclists = cyclists;
-            return this;
-        }
-
         public CyclistTeam Build()
         {
-            return new CyclistTeam(id, name, country, cyclists);
+            return new CyclistTeam(id, name, country);
         }
     }
 }

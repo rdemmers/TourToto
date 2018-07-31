@@ -88,6 +88,11 @@ namespace TourToto.Service
                 MessageBox.Show((e.Message));
                 return false;
             }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return false;
+            }
         }
 
         public bool Update(User user)

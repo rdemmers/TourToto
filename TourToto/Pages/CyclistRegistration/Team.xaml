@@ -34,19 +34,12 @@
                             <ColumnDefinition Width="Auto" MinWidth="90" />
                         </Grid.ColumnDefinitions>
                         <TextBlock
-                            Grid.Row="0"
+                            Grid.Row="1"
                             Grid.Column="0"
-                            Margin="5,5,5,5"
+                            Margin="-50,5,0,43"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
                             Text="Naam" />
-                        <TextBlock
-                            Grid.Row="0"
-                            Grid.Column="1"
-                            Margin="5,5,5,5"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Text="Renners" />
                         <ScrollViewer
                             Grid.Row="1"
                             Grid.Column="0"
@@ -55,7 +48,8 @@
                             <StackPanel>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="8*" />
+                                        <ColumnDefinition Width="97*" />
                                         <ColumnDefinition Width="Auto" MinWidth="90" />
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
@@ -64,56 +58,39 @@
                                         <RowDefinition Height="Auto" />
                                     </Grid.RowDefinitions>
                                     <TextBox
+                                        Name="NameBox"
                                         Grid.Row="0"
                                         Grid.Column="0"
+                                        Grid.ColumnSpan="2"
                                         MinWidth="300"
                                         MaxWidth="1000"
-                                        Margin="5,5,5,5"
-                                        Text="Jumbo" />
-                                    <TextBlock
-                                        Grid.Row="0"
-                                        Grid.Column="1"
-                                        Margin="15,5,5,5"
-                                        Text="8" />
-                                    <Button
-                                        Grid.Row="0"
-                                        Grid.Column="2"
-                                        Width="80"
-                                        Margin="5,5,5,5"
-                                        Content="Verwijderen" />
+                                        Margin="5,5,5,5" />
                                     <TextBox
+                                        Name="CountryBox"
                                         Grid.Row="1"
                                         Grid.Column="0"
+                                        Grid.ColumnSpan="2"
                                         MinWidth="300"
                                         MaxWidth="1000"
                                         Margin="5,5,5,5"
                                         Text="Werpers" />
-                                    <TextBlock
-                                        Grid.Row="1"
-                                        Grid.Column="1"
-                                        Margin="15,5,5,5"
-                                        Text="3" />
                                     <Button
                                         Grid.Row="1"
-                                        Grid.Column="2"
+                                        Grid.Column="3"
                                         Width="80"
                                         Margin="5,5,5,5"
-                                        Content="Verwijderen" />
+                                        Content="Toevoegen"
+                                        PreviewMouseLeftButtonUp="Button_PreviewMouseLeftButtonUp" />
                                 </Grid>
                             </StackPanel>
                         </ScrollViewer>
-                        <TextBox
-                            Grid.Row="2"
+                        <TextBlock
+                            Grid.Row="1"
                             Grid.Column="0"
-                            MinWidth="300"
-                            MaxWidth="1000"
-                            Margin="5,5,5,5" />
-                        <Button
-                            Grid.Row="2"
-                            Grid.Column="1"
-                            Width="80"
-                            Margin="5,5,5,5"
-                            Content="Toevoegen" />
+                            Margin="-50,40,0,8"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Text="Land" />
                     </Grid>
                 </Grid>
             </Grid>

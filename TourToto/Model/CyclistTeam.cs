@@ -6,26 +6,25 @@ namespace TourToto.Model
 {
     public class CyclistTeam
     {
-        private int id;
-        private string name;
         private string country;
         private List<CyclistTeamDao> cyclists;
-
-        public int Id { get; }
-        public string Name { get; set; }
-        public string Country { get; set; }
-        public List<CyclistTeamDao> Cyclists { get; set; }
+        private int id;
+        private string name;
 
         public CyclistTeam()
         {
         }
 
-        public CyclistTeam(int id, string name, string country, List<CyclistTeamDao> cyclists)
+        public CyclistTeam(int id, string name, string country)
         {
-            this.id = id;
-            this.name = name;
-            this.country = country;
-            this.cyclists = cyclists;
+            this.Id = id;
+            this.Name = name;
+            this.Country = country;
         }
+
+        public string Country { get => country; set => country = value; }
+        public List<CyclistTeamDao> Cyclists { get => cyclists; set => cyclists = value; }
+        public int Id { get => id; set => id = value; }
+        public string Name { get => name; set => name = value; }
     }
 }

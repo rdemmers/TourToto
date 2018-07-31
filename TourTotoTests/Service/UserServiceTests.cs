@@ -16,7 +16,7 @@ namespace TourToto.Service.Tests
     {
         private UserService service;
         private int lastWrittenId;
-        private UserService retrievedUser;
+        private User retrievedUser;
 
         public UserServiceTests()
         {
@@ -36,7 +36,7 @@ namespace TourToto.Service.Tests
         public void registerUser()
         {
             UserBuilder builder = new UserBuilder();
-            UserService user = builder
+            User user = builder
                             .SetCredentials(1)
                             .SetName("Entity thijs werkt")
                             .SetEmail("test@gmail.com")
@@ -49,9 +49,9 @@ namespace TourToto.Service.Tests
 
         public void getUserTest_validId()
         {
-            UserService actual = service.Get(lastWrittenId);
+            User actual = service.Get(lastWrittenId);
             UserBuilder builder = new UserBuilder();
-            UserService expected = builder
+            User expected = builder
                             .SetCredentials(1)
                             .SetName("Entity thijs werkt")
                             .SetEmail("test@gmail.com")
@@ -72,7 +72,7 @@ namespace TourToto.Service.Tests
                 retrievedUser.Name = "updatenaam";
                 service.Update(retrievedUser);
 
-                UserService updatedUser = service.Get(retrievedUser.Id);
+                User updatedUser = service.Get(retrievedUser.Id);
 
                 Assert.AreEqual(updatedUser.Name, "updatenaam");
             }

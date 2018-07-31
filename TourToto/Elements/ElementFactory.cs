@@ -788,14 +788,10 @@ namespace TourToto.Elements
 
         private void SetVisibilityProperty()
         {
-            if (controlProperties.HasIsVisible)
-            {
-                newItem = Convert.ChangeType(newItem, type);
-                if (controlProperties.IsVisible)
-                    newItem.Visibility = Visibility.Visible;
-                else
-                    newItem.Visibility = Visibility.Hidden;
-            }
+            if (!controlProperties.HasIsVisible) return;
+
+            newItem = Convert.ChangeType(newItem, type);
+            newItem.Visibility = controlProperties.IsVisible ? Visibility.Visible : Visibility.Hidden;
         }
 
         private void SetWidthProperties()

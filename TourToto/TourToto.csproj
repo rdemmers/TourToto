@@ -321,6 +321,8 @@
     <Compile Include="Pages\UserRegistration.xaml.cs">
       <DependentUpon>UserRegistration.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Service\CyclistService.cs" />
+    <Compile Include="Service\Interface\ICyclistService.cs" />
     <Compile Include="Service\Interface\IUserService.cs" />
     <Compile Include="Service\PageManager.cs" />
     <Compile Include="Service\ServiceManager.cs" />
@@ -330,6 +332,7 @@
     </Compile>
     <Compile Include="Tools\Interfaces\IPassword.cs" />
     <Compile Include="Tools\PasswordBase64.cs" />
+    <Compile Include="Tools\Validator.cs" />
     <Compile Include="TotoConfig.cs" />
     <Compile Include="Elements\TabItem.cs" />
     <ApplicationDefinition Include="App.xaml">
