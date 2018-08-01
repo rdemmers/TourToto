@@ -324,13 +324,12 @@
     <Compile Include="Service\CyclistService.cs" />
     <Compile Include="Service\Interface\ICyclistService.cs" />
     <Compile Include="Service\Interface\IUserService.cs" />
-    <Compile Include="Service\PageManager.cs" />
     <Compile Include="Service\ServiceManager.cs" />
     <Compile Include="Service\UserService.cs" />
     <Compile Include="TabControlStyleTemplate.xaml.cs">
       <DependentUpon>TabControlStyleTemplate.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Tools\Interfaces\IPassword.cs" />
+    <Compile Include="Tools\Interface\IPassword.cs" />
     <Compile Include="Tools\PasswordBase64.cs" />
     <Compile Include="Tools\Validator.cs" />
     <Compile Include="TotoConfig.cs" />
@@ -339,6 +338,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModel\CollectionViewModel.cs" />
+    <Compile Include="ViewModel\CyclistTeamViewModel.cs" />
+    <Compile Include="ViewModel\CyclistViewModel.cs" />
+    <Compile Include="ViewModel\Interface\ICollectionViewModel.cs" />
+    <Compile Include="ViewModel\ViewModelManager.cs" />
     <Page Include="Body.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

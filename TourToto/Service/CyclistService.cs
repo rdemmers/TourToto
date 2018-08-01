@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using TourToto.Model;
 using TourToto.Model.DataAccessObject;
 using TourToto.Service.Interface;
+using TourToto.ViewModel;
 
 namespace TourToto.Service
 {
@@ -25,9 +21,10 @@ namespace TourToto.Service
 
         public bool AddCyclist(Cyclist cyclist)
         {
-            var id = cyclistDao.Add(cyclist);
-            if (id > 0)
+            cyclist.Id = cyclistDao.Add(cyclist);
+            if (cyclist.Id > 0)
             {
+                ViewModelManager.GetCollection().AllCyclists.Add(cyclist);
                 return true;
             }
             return false;
@@ -38,10 +35,13 @@ namespace TourToto.Service
             var team = new CyclistTeam(0, name, country);
             try
             {
-                var id = cyclistTeamDao.Add(team);
+                team.Id = cyclistTeamDao.Add(team);
 
-                if (id > 0) return true;
-
+                if (team.Id > 0)
+                {
+                    ViewModelManager.GetCollection().AllTeams.Add(team);
+                    return true;
+                }
                 return false;
             }
             catch (Exception e)
@@ -51,14 +51,14 @@ namespace TourToto.Service
             }
         }
 
-        public List<CyclistTeam> GetAllTeams()
+        public ObservableCollection<CyclistTeam> GetAllTeams()
         {
-            return cyclistTeamDao.GetAll();
+            return ViewModelManager.GetCollection().AllTeams = new ObservableCollection<CyclistTeam>(cyclistTeamDao.GetAll());
         }
 
-        public List<Cyclist> GetAllCyclists()
+        public ObservableCollection<Cyclist> GetAllCyclists()
         {
-            return cyclistDao.GetAll();
+            return ViewModelManager.GetCollection().AllCyclists = new ObservableCollection<Cyclist>(cyclistDao.GetAll());
         }
     }
 }

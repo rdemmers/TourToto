@@ -12,9 +12,9 @@ namespace TourToto.Service.Interface
     {
         bool AddTeam(string name, string country);
 
-        List<CyclistTeam> GetAllTeams();
+        ObservableCollection<CyclistTeam> GetAllTeams();
 
-        List<Cyclist> GetAllCyclists();
+        ObservableCollection<Cyclist> GetAllCyclists();
 
         bool AddCyclist(Cyclist cyclist);
     }
