@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using TourToto.Elements;
+using TourToto.Views.Elements;
 
 namespace TourToto
 {

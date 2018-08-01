@@ -240,109 +240,110 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Builder\CyclistTeamBuilder.cs" />
-    <Compile Include="Builder\DayBuilder.cs" />
-    <Compile Include="Builder\Interface\ICyclistTeamBuilder.cs" />
-    <Compile Include="Builder\Interface\IDayBuilder.cs" />
-    <Compile Include="Builder\Interface\IUserBuilder.cs" />
-    <Compile Include="Builder\UserBuilder.cs" />
-    <Compile Include="Connection\Crud.cs" />
-    <Compile Include="Connection\Interface\ICrud.cs" />
-    <Compile Include="Connection\Interface\IRunQuery.cs" />
-    <Compile Include="Connection\Interface\ISqlQueryData.cs" />
-    <Compile Include="Connection\Interface\ISqlTransactionData.cs" />
-    <Compile Include="Connection\Interface\ISqlTransactionDataEnum.cs" />
-    <Compile Include="Connection\RunQuery.cs" />
-    <Compile Include="Connection\SqlConnector.cs" />
-    <Compile Include="Connection\SqlQueryData.cs" />
-    <Compile Include="Connection\SqlTransactionData.cs" />
-    <Compile Include="Connection\SqlTransactionDataEnum.cs" />
-    <Compile Include="Elements\Control.cs" />
-    <Compile Include="Elements\ControlFactory.cs" />
-    <Compile Include="Elements\ControlProperties.cs" />
-    <Compile Include="Elements\ElementFactory.cs" />
-    <Compile Include="Elements\Email.cs" />
-    <Compile Include="Elements\Image.cs" />
-    <Compile Include="Model\Cyclist.cs" />
-    <Compile Include="Model\CyclistTeam.cs" />
-    <Compile Include="Model\DataAccessObject\CyclistDao.cs" />
-    <Compile Include="Model\Interface\ICyclistDao.cs" />
-    <Compile Include="Model\Interface\ICyclistTeamDao.cs" />
-    <Compile Include="Model\Interface\IUserDao.cs" />
-    <Compile Include="Model\Day.cs" />
-    <Compile Include="Model\Tour.cs" />
-    <Compile Include="Model\User.cs" />
-    <Compile Include="Model\DataAccessObject\CyclistTeamDao.cs" />
-    <Compile Include="Model\DataAccessObject\UserDao.cs" />
-    <Compile Include="Model\UserLeaderboard.cs" />
-    <Compile Include="Model\UserTeam.cs" />
-    <Compile Include="Pages\ChooseReserveControl.xaml.cs">
+    <Compile Include="Models\Builder\CyclistTeamBuilder.cs" />
+    <Compile Include="Models\Builder\DayBuilder.cs" />
+    <Compile Include="DataTypes\Interfaces\ICyclistTeamBuilder.cs" />
+    <Compile Include="DataTypes\Interfaces\IDayBuilder.cs" />
+    <Compile Include="DataTypes\Interfaces\IUserBuilder.cs" />
+    <Compile Include="Models\Builder\UserBuilder.cs" />
+    <Compile Include="Models\DataAccessObject\Connection\Crud.cs" />
+    <Compile Include="DataTypes\Interfaces\ICrud.cs" />
+    <Compile Include="DataTypes\Interfaces\IRunQuery.cs" />
+    <Compile Include="DataTypes\Interfaces\ISqlQueryData.cs" />
+    <Compile Include="DataTypes\Interfaces\ISqlTransactionData.cs" />
+    <Compile Include="DataTypes\Interfaces\ISqlTransactionDataEnum.cs" />
+    <Compile Include="Models\DataAccessObject\Connection\RunQuery.cs" />
+    <Compile Include="Models\DataAccessObject\Connection\SqlConnector.cs" />
+    <Compile Include="Models\DataAccessObject\Connection\SqlQueryData.cs" />
+    <Compile Include="Models\DataAccessObject\Connection\SqlTransactionData.cs" />
+    <Compile Include="Models\DataAccessObject\Connection\SqlTransactionDataEnum.cs" />
+    <Compile Include="Views\Elements\Control.cs" />
+    <Compile Include="Views\Elements\ControlFactory.cs" />
+    <Compile Include="Views\Elements\ControlProperties.cs" />
+    <Compile Include="Views\Elements\ElementFactory.cs" />
+    <Compile Include="Views\Elements\Email.cs" />
+    <Compile Include="Views\Elements\Image.cs" />
+    <Compile Include="Models\Cyclist.cs" />
+    <Compile Include="Models\CyclistTeam.cs" />
+    <Compile Include="Models\DataAccessObject\CyclistDao.cs" />
+    <Compile Include="DataTypes\Interfaces\ICyclistDao.cs" />
+    <Compile Include="DataTypes\Interfaces\ICyclistTeamDao.cs" />
+    <Compile Include="DataTypes\Interfaces\IUserDao.cs" />
+    <Compile Include="Models\Day.cs" />
+    <Compile Include="Models\Tour.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\DataAccessObject\CyclistTeamDao.cs" />
+    <Compile Include="Models\DataAccessObject\UserDao.cs" />
+    <Compile Include="Models\UserLeaderboard.cs" />
+    <Compile Include="Models\UserTeam.cs" />
+    <Compile Include="Views\ChooseReserveControl.xaml.cs">
       <DependentUpon>ChooseReserveControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\ChooseTeamControl.xaml.cs">
+    <Compile Include="Views\ChooseTeamControl.xaml.cs">
       <DependentUpon>ChooseTeamControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\CyclistDisqualifiedControl.xaml.cs">
+    <Compile Include="Views\CyclistDisqualifiedControl.xaml.cs">
       <DependentUpon>CyclistDisqualifiedControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\CyclistRegistrationControl.xaml.cs">
+    <Compile Include="Views\CyclistRegistrationControl.xaml.cs">
       <DependentUpon>CyclistRegistrationControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\CyclistRegistration\CyclistRegistration.xaml.cs">
+    <Compile Include="Views\CyclistRegistration\CyclistRegistration.xaml.cs">
       <DependentUpon>CyclistRegistration.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\CyclistRegistration\Scoring.xaml.cs">
+    <Compile Include="Views\CyclistRegistration\Scoring.xaml.cs">
       <DependentUpon>Scoring.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\CyclistRegistration\Team.xaml.cs">
+    <Compile Include="Views\CyclistRegistration\Team.xaml.cs">
       <DependentUpon>Team.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\HomeControl.xaml.cs">
+    <Compile Include="Views\HomeControl.xaml.cs">
       <DependentUpon>HomeControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\RegisterRankingControl.xaml.cs">
+    <Compile Include="Views\RegisterRankingControl.xaml.cs">
       <DependentUpon>RegisterRankingControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\ShowRankingControl.xaml.cs">
+    <Compile Include="Views\ShowRankingControl.xaml.cs">
       <DependentUpon>ShowRankingControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\ShowRanking\DayRanking.xaml.cs">
+    <Compile Include="Views\ShowRanking\DayRanking.xaml.cs">
       <DependentUpon>DayRanking.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\ShowRanking\RankingByDay.xaml.cs">
+    <Compile Include="Views\ShowRanking\RankingByDay.xaml.cs">
       <DependentUpon>RankingByDay.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\ShowRanking\TotalRanking.xaml.cs">
+    <Compile Include="Views\ShowRanking\TotalRanking.xaml.cs">
       <DependentUpon>TotalRanking.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\UserLogin.xaml.cs">
+    <Compile Include="Views\UserLogin.xaml.cs">
       <DependentUpon>UserLogin.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\UserRegistration.xaml.cs">
+    <Compile Include="Views\UserRegistration.xaml.cs">
       <DependentUpon>UserRegistration.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Service\CyclistService.cs" />
-    <Compile Include="Service\Interface\ICyclistService.cs" />
-    <Compile Include="Service\Interface\IUserService.cs" />
-    <Compile Include="Service\ServiceManager.cs" />
-    <Compile Include="Service\UserService.cs" />
+    <Compile Include="Services\CyclistService.cs" />
+    <Compile Include="DataTypes\Interfaces\ICyclistService.cs" />
+    <Compile Include="DataTypes\Interfaces\IUserService.cs" />
+    <Compile Include="Services\PageManager.cs" />
+    <Compile Include="Services\ServiceManager.cs" />
+    <Compile Include="Services\UserService.cs" />
     <Compile Include="TabControlStyleTemplate.xaml.cs">
       <DependentUpon>TabControlStyleTemplate.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Tools\Interface\IPassword.cs" />
+    <Compile Include="DataTypes\Interfaces\IPassword.cs" />
     <Compile Include="Tools\PasswordBase64.cs" />
     <Compile Include="Tools\Validator.cs" />
     <Compile Include="TotoConfig.cs" />
-    <Compile Include="Elements\TabItem.cs" />
+    <Compile Include="Views\Elements\TabItem.cs" />
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ViewModel\CollectionViewModel.cs" />
-    <Compile Include="ViewModel\CyclistTeamViewModel.cs" />
-    <Compile Include="ViewModel\CyclistViewModel.cs" />
-    <Compile Include="ViewModel\Interface\ICollectionViewModel.cs" />
-    <Compile Include="ViewModel\ViewModelManager.cs" />
+    <Compile Include="ViewModels\CollectionViewModel.cs" />
+    <Compile Include="ViewModels\CyclistTeamViewModel.cs" />
+    <Compile Include="ViewModels\CyclistViewModel.cs" />
+    <Compile Include="DataTypes\Interfaces\ICollectionViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelManager.cs" />
     <Page Include="Body.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -358,63 +359,63 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Pages\ChooseReserveControl.xaml">
+    <Page Include="Views\ChooseReserveControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\ChooseTeamControl.xaml">
+    <Page Include="Views\ChooseTeamControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\CyclistDisqualifiedControl.xaml">
+    <Page Include="Views\CyclistDisqualifiedControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\CyclistRegistrationControl.xaml">
+    <Page Include="Views\CyclistRegistrationControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\CyclistRegistration\CyclistRegistration.xaml">
+    <Page Include="Views\CyclistRegistration\CyclistRegistration.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\CyclistRegistration\Scoring.xaml">
+    <Page Include="Views\CyclistRegistration\Scoring.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\CyclistRegistration\Team.xaml">
+    <Page Include="Views\CyclistRegistration\Team.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\HomeControl.xaml">
+    <Page Include="Views\HomeControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\RegisterRankingControl.xaml">
+    <Page Include="Views\RegisterRankingControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\ShowRankingControl.xaml">
+    <Page Include="Views\ShowRankingControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\ShowRanking\DayRanking.xaml">
+    <Page Include="Views\ShowRanking\DayRanking.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\ShowRanking\RankingByDay.xaml">
+    <Page Include="Views\ShowRanking\RankingByDay.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\ShowRanking\TotalRanking.xaml">
+    <Page Include="Views\ShowRanking\TotalRanking.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\UserLogin.xaml">
+    <Page Include="Views\UserLogin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\UserRegistration.xaml">
+    <Page Include="Views\UserRegistration.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

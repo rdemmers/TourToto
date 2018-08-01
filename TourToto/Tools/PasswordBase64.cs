@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Security.Cryptography;
 using System.Text;
-using TourToto.Tools.Interfaces;
+using TourToto.DataTypes.Interfaces;
 
 namespace TourToto.Tools
 {

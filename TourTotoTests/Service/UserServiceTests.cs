@@ -1,15 +1,11 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TourToto.Service;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TourToto.Model;
-using TourToto.Builder;
-using TourToto.Model.DataAccessObject;
+using TourToto.Models;
+using TourToto.Models.Builder;
+using TourToto.Models.DataAccessObject;
+using TourToto.Services;
 
-namespace TourToto.Service.Tests
+namespace TourTotoTests.Service
 {
     [TestClass()]
     public class UserServiceTests

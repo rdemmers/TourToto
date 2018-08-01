@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
-using TourToto.Service;
+using TourToto.Services;
 
 namespace TourToto
 {
