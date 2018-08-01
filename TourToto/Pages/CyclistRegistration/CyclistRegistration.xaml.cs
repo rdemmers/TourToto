@@ -15,18 +15,20 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TourToto.Model;
 using TourToto.Service;
+using TourToto.Service.Interface;
 
 namespace TourToto.Pages.CyclistRegistration
 {
     /// <summary>
-    /// Interaction logic for Cyclist.xaml
+    /// Interaction logic for CyclistRegistration.xaml
     /// </summary>
-    public partial class Cyclist : UserControl
+    public partial class CyclistRegistration : UserControl
     {
-        public Cyclist()
+        public CyclistRegistration()
         {
             InitializeComponent();
             InitializeComboBox();
+            InitializeListBox();
         }
 
         private void InitializeComboBox()
@@ -35,10 +37,21 @@ namespace TourToto.Pages.CyclistRegistration
             TeamsComboBox.DisplayMemberPath = "Name";
         }
 
+        private void InitializeListBox()
+        {
+            CyclistListBox.ItemsSource = ServiceManager.GetCyclistService().GetAllCyclists();
+            CyclistListBox.DisplayMemberPath = "Name";
+        }
+
         private void SubmitCyclist_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             CyclistTeam team = (CyclistTeam)TeamsComboBox.SelectedItem;
-            string cyclist = CyclistName.Text;
+            string cyclistName = CyclistName.Text;
+
+            ICyclistService service = ServiceManager.GetCyclistService();
+            Cyclist cyclist = new Cyclist(0, cyclistName, team.Id);
+            service.AddCyclist(cyclist);
+            InitializeListBox();
         }
     }
 }

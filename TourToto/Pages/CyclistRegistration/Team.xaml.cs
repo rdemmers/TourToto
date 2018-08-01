@@ -35,7 +35,6 @@ namespace TourToto.Pages.CyclistRegistration
             {
                 ICyclistService cyclistService = ServiceManager.GetCyclistService();
                 cyclistService.AddTeam(name, country);
-                ServiceManager.GetCyclistService().GetAllTeams();
             }
             catch (Exception ex)
             {

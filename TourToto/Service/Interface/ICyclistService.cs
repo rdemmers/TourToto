@@ -13,5 +13,9 @@ namespace TourToto.Service.Interface
         bool AddTeam(string name, string country);
 
         List<CyclistTeam> GetAllTeams();
+
+        List<Cyclist> GetAllCyclists();
+
+        bool AddCyclist(Cyclist cyclist);
     }
 }

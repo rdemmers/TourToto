@@ -29,7 +29,7 @@ namespace TourToto.Model
 
         public override string ToString()
         {
-            return Name;
+            return $"Name: {Name}, Id: {Id}, Country: {Country}";
         }
     }
 }

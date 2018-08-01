@@ -288,8 +288,8 @@
     <Compile Include="Pages\CyclistRegistrationControl.xaml.cs">
       <DependentUpon>CyclistRegistrationControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\CyclistRegistration\Cyclist.xaml.cs">
-      <DependentUpon>Cyclist.xaml</DependentUpon>
+    <Compile Include="Pages\CyclistRegistration\CyclistRegistration.xaml.cs">
+      <DependentUpon>CyclistRegistration.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\CyclistRegistration\Scoring.xaml.cs">
       <DependentUpon>Scoring.xaml</DependentUpon>
@@ -370,7 +370,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\CyclistRegistration\Cyclist.xaml">
+    <Page Include="Pages\CyclistRegistration\CyclistRegistration.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

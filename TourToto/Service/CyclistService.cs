@@ -23,6 +23,16 @@ namespace TourToto.Service
             this.cyclistDao = cyclistDao;
         }
 
+        public bool AddCyclist(Cyclist cyclist)
+        {
+            var id = cyclistDao.Add(cyclist);
+            if (id > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
         public bool AddTeam(string name, string country)
         {
             var team = new CyclistTeam(0, name, country);
@@ -44,6 +54,11 @@ namespace TourToto.Service
         public List<CyclistTeam> GetAllTeams()
         {
             return cyclistTeamDao.GetAll();
+        }
+
+        public List<Cyclist> GetAllCyclists()
+        {
+            return cyclistDao.GetAll();
         }
     }
 }

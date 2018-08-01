@@ -35,7 +35,7 @@ namespace TourToto.Model.DataAccessObject
             }
             catch (Exception e)
             {
-                MessageBox.Show("Unable to register new Cyclist team. " + e.Message, "Register new team error type: " +
+                MessageBox.Show("Unable to register new CyclistRegistration team. " + e.Message, "Register new team error type: " +
                     e.GetType(), MessageBoxButton.OK, MessageBoxImage.Error);
                 Console.WriteLine(e.StackTrace);
                 return 0;
@@ -72,6 +72,7 @@ namespace TourToto.Model.DataAccessObject
             queryData.AddParameter("@id", SqlDbType.VarChar, Convert.ToString(id));
 
             var builder = new CyclistTeamBuilder();
+            CyclistTeam team = null;
 
             try
             {
@@ -79,23 +80,18 @@ namespace TourToto.Model.DataAccessObject
 
                 while (reader.Read())
                 {
-                    CyclistTeam team = builder
+                    team = builder
                         .SetId(id)
                         .SetName(reader.GetString(1))
                         .SetCountry(reader.GetString(2))
                         .Build();
-
-                    reader.Close();
-
-                    return team;
                 }
 
-                reader.Close();
-                return new CyclistTeam();
+                return team ?? new CyclistTeam();
             }
             catch (Exception e)
             {
-                MessageBox.Show("Unable to retrieve team. " + e.Message, "Cyclist team error type: " +
+                MessageBox.Show("Unable to retrieve team. " + e.Message, "CyclistRegistration team error type: " +
                     e.GetType(), MessageBoxButton.OK, MessageBoxImage.Error);
                 Console.WriteLine(e.StackTrace);
                 Console.WriteLine(e.Message);
@@ -129,7 +125,7 @@ namespace TourToto.Model.DataAccessObject
             }
             catch (Exception e)
             {
-                MessageBox.Show("Unable to retrieve team. " + e.Message, "Cyclist team error type: " +
+                MessageBox.Show("Unable to retrieve team. " + e.Message, "CyclistRegistration team error type: " +
                     e.GetType(), MessageBoxButton.OK, MessageBoxImage.Error);
                 Console.WriteLine(e.StackTrace);
                 Console.WriteLine(e.Message);

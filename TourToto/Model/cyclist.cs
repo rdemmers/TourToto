@@ -16,10 +16,11 @@ namespace TourToto.Model
         {
         }
 
-        public Cyclist(int id, string name)
+        public Cyclist(int id, string name, int cyclistTeamId)
         {
             Id = id;
             Name = name;
+            CyclistTeamId = cyclistTeamId;
         }
     }
 }
