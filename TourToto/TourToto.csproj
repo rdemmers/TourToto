@@ -332,7 +332,6 @@
     </Compile>
     <Compile Include="DataTypes\Interfaces\IPassword.cs" />
     <Compile Include="Tools\PasswordBase64.cs" />
-    <Compile Include="Tools\Validator.cs" />
     <Compile Include="TotoConfig.cs" />
     <Compile Include="Views\Elements\TabItem.cs" />
     <ApplicationDefinition Include="App.xaml">
